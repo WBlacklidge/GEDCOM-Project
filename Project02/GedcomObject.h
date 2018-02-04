@@ -55,6 +55,23 @@ namespace Utils
          /** Print the original string. */
          void printOriginal() const;
 
+		 /** Returns a copy of the ID */
+		 std::string getId() const;
+
+       int getLevel() const;
+
+       std::string getTag() const;
+
+       /** Will check if the tag is indvidual or family.
+       * @return True if INDI or FAM false if not. */
+       bool isIndiOrFam() const;
+
+       /** Will check if the passed in string is a valid tag.*/
+       bool isValidTag() const;
+
+       /** Get arguements */
+       std::string getArguements() const;
+
       private:
          /** Parse the string. */
          void parse();
@@ -77,14 +94,7 @@ namespace Utils
          /** The rest of the line beyond the level and tag. */
          std::string m_arguments;
 
-         /** Will check if the passed in string is a valid tag.
-         * @param tag The string to check. */
-         bool isValidTag(const std::string& tag) const;
-
-         /** Will check if the passed in string is a valid tag.
-         * @param tag The string to check.
-         * @return True if INDI or FAM false if not. */
-         bool isIndiOrFam(const std::string& tag) const;
+         
 
          /** Will check that the tag and and level are compatible.  
          * @tag The string tag. 

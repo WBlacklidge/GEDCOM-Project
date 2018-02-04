@@ -21,6 +21,12 @@
     <ClInclude Include="GedcomObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GedcomIndividual.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GedcomFamily.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GedcomFile.cpp">
@@ -32,5 +38,19 @@
     <ClCompile Include="GedcomObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GedcomIndividual.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GedcomFamily.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\data\My-Family-23-Jan-2018-808.ged">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\data\proj02test.ged">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

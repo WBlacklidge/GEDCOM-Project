@@ -35,7 +35,7 @@ void GedcomObject::printParsed() const
    // Print in this format <level>|<tag>|<valid>|<args>
    const char valid_char = (m_isValid)?'Y':'N';
    const bool is_level_0 = (0 == m_level) ? true : false;
-   const bool is_tag_indi_or_fam = isIndiOrFam(m_tag);
+   const bool is_tag_indi_or_fam = isIndiOrFam();
 
    if (is_level_0 && is_tag_indi_or_fam)
    {
@@ -60,7 +60,7 @@ void GedcomObject::parse()
    std::string temp;
 
    // Search until we get to the first space.  Everything to the left is the level.
-   unsigned int position = m_rawLine.find(' ');
+   size_t position = m_rawLine.find(' ');
 
    // Position now contains the location of the end of the first attribute, level.
    // Each character to the left of this position is the integer.
@@ -72,10 +72,10 @@ void GedcomObject::parse()
    // When level is 0 the tag and ID can be in either position.
 
    // Keep track of where we are starting.
-   const unsigned int start_of_tag = position+1;
+   const size_t start_of_tag = position+1;
 
    // Keep track of the end position
-   unsigned int end_of_tag = 0;
+   size_t end_of_tag = 0;
 
    // Track if we have arguements
    bool is_args = true;
@@ -99,12 +99,12 @@ void GedcomObject::parse()
    temp.clear();
    temp = m_rawLine.substr(start_of_tag, end_of_tag - start_of_tag);
 
-   const bool is_tag = isValidTag(temp);
+   const bool is_tag = isValidTag();
 
    // If this is the special level 0 case 
    // If its one of the two tags that need this special case
    // or if an ID was present before the TAG...
-   if (0 == m_level && (isIndiOrFam(temp) || !is_tag))
+   if (0 == m_level && (isIndiOrFam() || !is_tag))
    {
       // If its a tag...
       if (is_tag)
@@ -132,7 +132,7 @@ void GedcomObject::parse()
          m_tag = temp;
       }
 
-      m_isValid = isIndiOrFam(temp);
+      m_isValid = isIndiOrFam();
 
       // We got the ID and Tag, so we can exit this function.
       return;
@@ -146,7 +146,7 @@ void GedcomObject::parse()
 
    // Now that we have a tag we can tell if this is a valid entry or not.
    // Since we will only set it true if it finds something start it at false.
-   if (isValidTag(m_tag))
+   if (isValidTag())
    {
       // Now check that the tag and level are compatiable
       m_isValid = isTagCompatableWithLevel(m_tag, m_level);
@@ -165,13 +165,13 @@ void GedcomObject::parse()
    }
 }
 
-bool GedcomObject::isValidTag(const std::string& tag) const
+bool GedcomObject::isValidTag() const
 {
    for (unsigned int i = 0; i < Utils::Gedcom::e_end; ++i)
    {
       // As long as the tag is equal to any of our possible tags 
       // for this project it is valid.
-      if (tag == Utils::Gedcom::sc_tagsString[i])
+      if (m_tag == Utils::Gedcom::sc_tagsString[i])
       {
          return true;
       }
@@ -180,10 +180,10 @@ bool GedcomObject::isValidTag(const std::string& tag) const
    return false;
 }
 
-bool GedcomObject::isIndiOrFam(const std::string& tag) const
+bool GedcomObject::isIndiOrFam() const
 {
-   if ((tag == Utils::Gedcom::sc_tagsString[Utils::Gedcom::e_individualId]) ||
-      (tag == Utils::Gedcom::sc_tagsString[Utils::Gedcom::e_family]))
+   if ((m_tag == Utils::Gedcom::sc_tagsString[Utils::Gedcom::e_individualId]) ||
+      (m_tag == Utils::Gedcom::sc_tagsString[Utils::Gedcom::e_family]))
    {
       return true;
    }
@@ -231,4 +231,24 @@ bool GedcomObject::isTagCompatableWithLevel(const std::string& tag,
    }
 
    return false;
+}
+
+std::string GedcomObject::getId() const
+{
+	return m_id;
+}
+
+int GedcomObject::getLevel() const
+{
+   return m_level;
+}
+
+std::string GedcomObject::getTag() const
+{
+   return m_tag;
+}
+
+std::string GedcomObject::getArguements() const
+{
+   return m_arguments;
 }

@@ -22,7 +22,7 @@
     <ProjectGuid>{BD0B426E-4064-4ABB-82DE-A3B6013F344C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Project02</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -146,13 +146,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="GedcomFamily.h" />
+    <ClInclude Include="GedcomIndividual.h" />
     <ClInclude Include="GedcomFile.h" />
     <ClInclude Include="GedcomObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GedcomFamily.cpp" />
+    <ClCompile Include="GedcomIndividual.cpp" />
     <ClCompile Include="GedcomFile.cpp" />
     <ClCompile Include="GedcomObject.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\data\My-Family-23-Jan-2018-808.ged" />
+    <None Include="..\data\proj02test.ged" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

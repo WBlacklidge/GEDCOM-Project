@@ -7,9 +7,12 @@
 */
 #include <fstream>
 #include <string>
-#include <vector>
+#include <map>
+#include <cctype>
 
 #include "GedcomObject.h"
+#include "GedcomIndividual.h"
+#include "GedcomFamily.h"
 
 namespace Utils
 {
@@ -25,6 +28,53 @@ namespace Utils
 
          /** Data from the current line of the file. */
          std::vector<GedcomObject> m_fields;
+
+         struct compare
+         {
+            bool operator()(std::string a, std::string b) const
+            {
+               // If they are different sizes we might have a variance
+               // in number digits.
+               std::string temp_a = a;
+               std::string temp_b = b;
+               if (a.size() != b.size())
+               {
+                  if (a.size() > b.size())
+                  {
+                     for (int i = 0; i < b.size(); ++i)
+                     {
+                        temp_b = b;
+                        std::isdigit(static_cast<unsigned char>(temp_b[i]));
+                        temp_b.insert(0, "0");
+                     }
+                  }
+                  else if (b.size() > a.size())
+                  {
+                     for (int i = 0; i < a.size(); ++i)
+                     {
+                        temp_a = a;
+                        std::isdigit(static_cast<unsigned char>(temp_a[i]));
+                        temp_a.insert(0, "0");
+                     }
+                  }
+               }
+
+               if (temp_a > temp_b)
+               {
+                  return false;
+               }
+               else
+               {
+                  return true;
+               }
+            }
+         };
+
+         /** Data from the current line of the file. */
+         std::map<std::string, GedcomFamily, compare> m_families;
+
+         /** Data from the current line of the file. */
+         std::map<std::string, GedcomIndividual, compare> m_individuals;
 
          /** Open a Gedcom File.
          * @return True if the file was opened successfully.
@@ -46,6 +96,8 @@ namespace Utils
 
          /** Print all the lines that have been read and unprocessed. */
          void print() const;
+         void printIndividuals() const;
+         void printFamilies() const;
 
          /** Close the file. */
          void close();
