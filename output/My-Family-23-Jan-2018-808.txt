@@ -1,0 +1,313 @@
+C:\Users\wjblackl\Desktop\School\Week2\Project02\Release>Project02.exe "..\\data\\My-Family-23-Jan-2018-808.ged"
+--> 0 NOTE William Blacklidge
+<-- 0|NOTE|Y|William Blacklidge
+--> 0 HEAD
+<-- 0|HEAD|Y
+--> 1 SOUR Family Echo
+<-- 1|SOUR|N|Family Echo
+--> 2 WWW http://www.familyecho.com/
+<-- 2|WWW|N|http://www.familyecho.com/
+--> 1 FILE My Family
+<-- 1|FILE|N|My Family
+--> 1 DATE 23 JAN 2018
+<-- 1|DATE|N|23 JAN 2018
+--> 1 DEST ANSTFILE
+<-- 1|DEST|N|ANSTFILE
+--> 1 GEDC
+<-- 1|GEDC|N
+--> 2 VERS 5.5.1
+<-- 2|VERS|N|5.5.1
+--> 2 FORM LINEAGE-LINKED
+<-- 2|FORM|N|LINEAGE-LINKED
+--> 1 SUBM @I1@
+<-- 1|SUBM|N|@I1@
+--> 2 NAME Billy Madeup
+<-- 2|NAME|N|Billy Madeup
+--> 1 SUBN
+<-- 1|SUBN|N
+--> 1 CHAR UTF-8
+<-- 1|CHAR|N|UTF-8
+--> 0 @I1@ INDI
+<-- 0|INDI|Y|@I1@
+--> 1 NAME Billy /Madeup/
+<-- 1|NAME|Y|Billy /Madeup/
+--> 2 GIVN Billy
+<-- 2|GIVN|N|Billy
+--> 2 SURN Madeup
+<-- 2|SURN|N|Madeup
+--> 2 _MARNM Madeup
+<-- 2|_MARNM|N|Madeup
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y
+--> 2 DATE 19 JAN 1985
+<-- 2|DATE|Y|19 JAN 1985
+--> 1 FAMS @F1@
+<-- 1|FAMS|Y|@F1@
+--> 1 FAMC @F2@
+<-- 1|FAMC|Y|@F2@
+--> 0 @I2@ INDI
+<-- 0|INDI|Y|@I2@
+--> 1 NAME Joe /Madeup/
+<-- 1|NAME|Y|Joe /Madeup/
+--> 2 GIVN Joe
+<-- 2|GIVN|N|Joe
+--> 2 SURN Madeup
+<-- 2|SURN|N|Madeup
+--> 2 _MARNM Madeup
+<-- 2|_MARNM|N|Madeup
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y
+--> 2 DATE 1 OCT 1961
+<-- 2|DATE|Y|1 OCT 1961
+--> 1 FAMS @F2@
+<-- 1|FAMS|Y|@F2@
+--> 0 @I3@ INDI
+<-- 0|INDI|Y|@I3@
+--> 1 NAME Mary /AlsoMadeUp/
+<-- 1|NAME|Y|Mary /AlsoMadeUp/
+--> 2 GIVN Mary
+<-- 2|GIVN|N|Mary
+--> 2 SURN AlsoMadeUp
+<-- 2|SURN|N|AlsoMadeUp
+--> 2 _MARNM Madeup
+<-- 2|_MARNM|N|Madeup
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y
+--> 2 DATE 11 JUL 1960
+<-- 2|DATE|Y|11 JUL 1960
+--> 1 FAMS @F2@
+<-- 1|FAMS|Y|@F2@
+--> 0 @I4@ INDI
+<-- 0|INDI|Y|@I4@
+--> 1 NAME Kathryn /Johnson/
+<-- 1|NAME|Y|Kathryn /Johnson/
+--> 2 GIVN Kathryn
+<-- 2|GIVN|N|Kathryn
+--> 2 SURN Johnson
+<-- 2|SURN|N|Johnson
+--> 2 _MARNM Madeup
+<-- 2|_MARNM|N|Madeup
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y
+--> 2 DATE 12 MAR 1988
+<-- 2|DATE|Y|12 MAR 1988
+--> 1 FAMS @F1@
+<-- 1|FAMS|Y|@F1@
+--> 0 @I5@ INDI
+<-- 0|INDI|Y|@I5@
+--> 1 NAME Jesse /Madeup/
+<-- 1|NAME|Y|Jesse /Madeup/
+--> 2 GIVN Jesse
+<-- 2|GIVN|N|Jesse
+--> 2 SURN Madeup
+<-- 2|SURN|N|Madeup
+--> 2 _MARNM Rockwell
+<-- 2|_MARNM|N|Rockwell
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y
+--> 2 DATE 12 FEB 1982
+<-- 2|DATE|Y|12 FEB 1982
+--> 1 FAMS @F3@
+<-- 1|FAMS|Y|@F3@
+--> 1 FAMS @F4@
+<-- 1|FAMS|Y|@F4@
+--> 1 FAMC @F2@
+<-- 1|FAMC|Y|@F2@
+--> 0 @I6@ INDI
+<-- 0|INDI|Y|@I6@
+--> 1 NAME Jerry /Lewis/
+<-- 1|NAME|Y|Jerry /Lewis/
+--> 2 GIVN Jerry
+<-- 2|GIVN|N|Jerry
+--> 2 SURN Lewis
+<-- 2|SURN|N|Lewis
+--> 2 _MARNM Lewis
+<-- 2|_MARNM|N|Lewis
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y
+--> 2 DATE 7 JAN 1979
+<-- 2|DATE|Y|7 JAN 1979
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+--> 2 DATE 10 MAY 2010
+<-- 2|DATE|Y|10 MAY 2010
+--> 1 FAMS @F4@
+<-- 1|FAMS|Y|@F4@
+--> 0 @I7@ INDI
+<-- 0|INDI|Y|@I7@
+--> 1 NAME Colin /Rockwell/
+<-- 1|NAME|Y|Colin /Rockwell/
+--> 2 GIVN Colin
+<-- 2|GIVN|N|Colin
+--> 2 SURN Rockwell
+<-- 2|SURN|N|Rockwell
+--> 2 _MARNM Rockwell
+<-- 2|_MARNM|N|Rockwell
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y
+--> 2 DATE 17 JUN 1980
+<-- 2|DATE|Y|17 JUN 1980
+--> 1 FAMS @F3@
+<-- 1|FAMS|Y|@F3@
+--> 1 FAMS @F5@
+<-- 1|FAMS|Y|@F5@
+--> 0 @I8@ INDI
+<-- 0|INDI|Y|@I8@
+--> 1 NAME Jenny /Johnanson/
+<-- 1|NAME|Y|Jenny /Johnanson/
+--> 2 GIVN Jenny
+<-- 2|GIVN|N|Jenny
+--> 2 SURN Johnanson
+<-- 2|SURN|N|Johnanson
+--> 2 _MARNM Johnanson
+<-- 2|_MARNM|N|Johnanson
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y
+--> 2 DATE 19 JUN 1982
+<-- 2|DATE|Y|19 JUN 1982
+--> 1 FAMS @F5@
+<-- 1|FAMS|Y|@F5@
+--> 0 @I9@ INDI
+<-- 0|INDI|Y|@I9@
+--> 1 NAME Kate /Rockwell/
+<-- 1|NAME|Y|Kate /Rockwell/
+--> 2 GIVN Kate
+<-- 2|GIVN|N|Kate
+--> 2 SURN Rockwell
+<-- 2|SURN|N|Rockwell
+--> 2 _MARNM Rockwell
+<-- 2|_MARNM|N|Rockwell
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y
+--> 2 DATE 11 JUN 2008
+<-- 2|DATE|Y|11 JUN 2008
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+--> 0 @I10@ INDI
+<-- 0|INDI|Y|@I10@
+--> 1 NAME Blake /Rockwell/
+<-- 1|NAME|Y|Blake /Rockwell/
+--> 2 GIVN Blake
+<-- 2|GIVN|N|Blake
+--> 2 SURN Rockwell
+<-- 2|SURN|N|Rockwell
+--> 2 _MARNM Rockwell
+<-- 2|_MARNM|N|Rockwell
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y
+--> 2 DATE 1 JAN 2006
+<-- 2|DATE|Y|1 JAN 2006
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+--> 0 @I11@ INDI
+<-- 0|INDI|Y|@I11@
+--> 1 NAME David /Rockwell/
+<-- 1|NAME|Y|David /Rockwell/
+--> 2 GIVN David
+<-- 2|GIVN|N|David
+--> 2 SURN Rockwell
+<-- 2|SURN|N|Rockwell
+--> 2 _MARNM Rockwell
+<-- 2|_MARNM|N|Rockwell
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y
+--> 2 DATE 7 FEB 2010
+<-- 2|DATE|Y|7 FEB 2010
+--> 1 FAMC @F3@
+<-- 1|FAMC|Y|@F3@
+--> 0 @I12@ INDI
+<-- 0|INDI|Y|@I12@
+--> 1 NAME Jamis /Lewis/
+<-- 1|NAME|Y|Jamis /Lewis/
+--> 2 GIVN Jamis
+<-- 2|GIVN|N|Jamis
+--> 2 SURN Lewis
+<-- 2|SURN|N|Lewis
+--> 2 _MARNM Lewis
+<-- 2|_MARNM|N|Lewis
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y
+--> 2 DATE 13 MAR 2003
+<-- 2|DATE|Y|13 MAR 2003
+--> 1 FAMC @F4@
+<-- 1|FAMC|Y|@F4@
+--> 0 @F1@ FAM
+<-- 0|FAM|Y|@F1@
+--> 1 HUSB @I1@
+<-- 1|HUSB|Y|@I1@
+--> 1 WIFE @I4@
+<-- 1|WIFE|Y|@I4@
+--> 1 _CURRENT Y
+<-- 1|_CURRENT|N|Y
+--> 0 @F2@ FAM
+<-- 0|FAM|Y|@F2@
+--> 1 HUSB @I2@
+<-- 1|HUSB|Y|@I2@
+--> 1 WIFE @I3@
+<-- 1|WIFE|Y|@I3@
+--> 1 CHIL @I1@
+<-- 1|CHIL|Y|@I1@
+--> 1 CHIL @I5@
+<-- 1|CHIL|Y|@I5@
+--> 1 _CURRENT Y
+<-- 1|_CURRENT|N|Y
+--> 0 @F3@ FAM
+<-- 0|FAM|Y|@F3@
+--> 1 HUSB @I7@
+<-- 1|HUSB|Y|@I7@
+--> 1 WIFE @I5@
+<-- 1|WIFE|Y|@I5@
+--> 1 CHIL @I11@
+<-- 1|CHIL|Y|@I11@
+--> 1 _CURRENT Y
+<-- 1|_CURRENT|N|Y
+--> 0 @F4@ FAM
+<-- 0|FAM|Y|@F4@
+--> 1 HUSB @I6@
+<-- 1|HUSB|Y|@I6@
+--> 1 WIFE @I5@
+<-- 1|WIFE|Y|@I5@
+--> 1 CHIL @I12@
+<-- 1|CHIL|Y|@I12@
+--> 1 _CURRENT N
+<-- 1|_CURRENT|N|N
+--> 0 @F5@ FAM
+<-- 0|FAM|Y|@F5@
+--> 1 HUSB @I7@
+<-- 1|HUSB|Y|@I7@
+--> 1 WIFE @I8@
+<-- 1|WIFE|Y|@I8@
+--> 1 CHIL @I9@
+<-- 1|CHIL|Y|@I9@
+--> 1 CHIL @I10@
+<-- 1|CHIL|Y|@I10@
+--> 1 _CURRENT N
+<-- 1|_CURRENT|N|N
+--> 0 TRLR
+<-- 0|TRLR|Y
+
+C:\Users\wjblackl\Desktop\School\Week2\Project02\Release>
