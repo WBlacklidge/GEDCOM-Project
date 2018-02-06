@@ -159,8 +159,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\data\My-Family-23-Jan-2018-808.ged" />
-    <None Include="..\data\proj02test.ged" />
+    <None Include="..\data\Family-2-6-Feb-2018-553.ged" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
