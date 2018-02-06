@@ -374,7 +374,7 @@ void GedcomFile::print() const
 	}
 }
 
-void GedcomFile::printIndividuals() const
+void GedcomFile::printIndividualsInDescendingId() const
 {
    std::cout << "*===============================================================================================================*" << std::endl;
    std::cout << "|ID:\t|Name:\t\t|Gender:|Birthday:\t\t|Age:\t|Alive:\t|Death:\t\t|Child:\t\t|Spouse:";
@@ -401,22 +401,22 @@ void GedcomFile::printIndividuals() const
          std::cout << it->second.m_deathday << "\t";
       }
       
-      if (it->second.m_child.size() <= 0)
+      if (it->second.m_childIds.size() <= 0)
       {
          std::cout << "NA\t\t";
       }
       else
       {
-         std::cout << it->second.m_child << "\t\t";
+         std::cout << it->second.m_childIds << "\t\t";
       }
 
-      if (it->second.m_spouse.size() <= 0)
+      if (it->second.m_spouseId.size() <= 0)
       {
          std::cout << "NA\t\t";
       }
       else
       {
-         std::cout << it->second.m_spouse << "\t\t";
+         std::cout << it->second.m_spouseId << "\t\t";
       }
       std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
    }
@@ -424,7 +424,7 @@ void GedcomFile::printIndividuals() const
    std::cout << "*===============================================================================================================*" << std::endl;
 }
 
-void GedcomFile::printFamilies() const
+void GedcomFile::printFamiliesInDescendingId() const
 {
    std::cout << "*===============================================================================================================*" << std::endl;
    std::cout << "|ID:\t|Married:     |Div:  |Husband ID:\t|Husband Name:\t|Wife ID:\t|Wife Name:\t|Children:\t\t";

@@ -89,8 +89,12 @@ namespace Utils
 
          /** Print all the lines that have been read and unprocessed. */
          void print() const;
-         void printIndividuals() const;
-         void printFamilies() const;
+
+         /** Print all of the individuals in order by their ID. */
+         void printIndividualsInDescendingId() const;
+
+         /** Print all of the families in order by their ID. */
+         void printFamiliesInDescendingId() const;
 
          /** Close the file. */
          void close();

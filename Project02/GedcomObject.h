@@ -35,9 +35,9 @@ namespace Utils
       };
 
       /** Array with string representations of the tags. */
-      static const char* sc_tagsString[]{"INDI", "NAME", "SEX", "BIRT", "DEAT", 
+      static const char* sc_tagsString[]{ "INDI", "NAME", "SEX", "BIRT", "DEAT",
          "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD",
-         "TRLR", "NOTE"};
+         "TRLR", "NOTE" };
 
       class GedcomObject
       {
@@ -55,22 +55,27 @@ namespace Utils
          /** Print the original string. */
          void printOriginal() const;
 
-		 /** Returns a copy of the ID */
-		 std::string getId() const;
+         /** Returns a copy of the ID 
+         * @return The ID in string format.*/
+         std::string getId() const;
 
-       int getLevel() const;
+         /** Accessor to return the level as a value 
+         * @return The level */
+         int getLevel() const;
 
-       std::string getTag() const;
+         /** Accesor to return the tag as a value. 
+         * @return The tag in string format.*/
+         std::string getTag() const;
 
-       /** Will check if the tag is indvidual or family.
-       * @return True if INDI or FAM false if not. */
-       bool isIndiOrFam() const;
+         /** Will check if the tag is indvidual or family.
+         * @return True if INDI or FAM false if not. */
+         bool isIndiOrFam() const;
 
-       /** Will check if the passed in string is a valid tag.*/
-       bool isValidTag() const;
+         /** Will check if the passed in string is a valid tag.*/
+         bool isValidTag() const;
 
-       /** Get arguements */
-       std::string getArguements() const;
+         /** Get arguements */
+         std::string getArguements() const;
 
       private:
          /** Parse the string. */
@@ -94,13 +99,11 @@ namespace Utils
          /** The rest of the line beyond the level and tag. */
          std::string m_arguments;
 
-         
-
-         /** Will check that the tag and and level are compatible.  
-         * @tag The string tag. 
-         * @level The integer level.
+         /** Will check that the tag and and level are compatible.
+         * @param tag The string tag.
+         * @param evel The integer level.
          * @return True if compatable false if not. */
-         bool isTagCompatableWithLevel(const std::string& tag, 
+         bool isTagCompatableWithLevel(const std::string& tag,
             const int level) const;
       };
    }
