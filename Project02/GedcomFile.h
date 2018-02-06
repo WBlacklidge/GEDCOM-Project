@@ -59,14 +59,7 @@ namespace Utils
                   }
                }
 
-               if (temp_a > temp_b)
-               {
-                  return false;
-               }
-               else
-               {
-                  return true;
-               }
+               return (temp_a.compare(temp_b) < 0);
             }
          };
 

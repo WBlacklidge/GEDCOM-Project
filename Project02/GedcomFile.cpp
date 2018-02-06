@@ -421,13 +421,13 @@ void GedcomFile::printIndividuals() const
       std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
    }
 
-   std::cout << "*====================================================================*" << std::endl;
+   std::cout << "*===============================================================================================================*" << std::endl;
 }
 
 void GedcomFile::printFamilies() const
 {
    std::cout << "*===============================================================================================================*" << std::endl;
-   std::cout << "|ID:\t|Married:\t\t|Divorced:|Husband ID:\t\t|Husband Name:\t|Wife ID:\t|Wife Name:\t\t|Children:\t\t";
+   std::cout << "|ID:\t|Married:     |Div:  |Husband ID:\t|Husband Name:\t|Wife ID:\t|Wife Name:\t|Children:\t\t";
    std::cout << "\n*===============================================================================================================*" << std::endl;
 
    std::map<std::string, GedcomFamily>::const_iterator it;
@@ -435,7 +435,15 @@ void GedcomFile::printFamilies() const
    {
       std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
       std::cout << it->first << "\t";
-      std::cout << it->second.m_marriageDate << "\t";
+      if (it->second.m_marriageDate.size() == 0)
+      {
+         std::cout << "NA\t\t";
+      }
+      else
+      {
+         std::cout << it->second.m_marriageDate << "\t";
+      }
+      
       const std::string divorce_date = it->second.m_divorceDate.size() == 0 ? "NA" : it->second.m_divorceDate;
       std::cout << divorce_date << "\t";
       std::cout << it->second.m_husbandId << "\t\t";
@@ -454,16 +462,21 @@ void GedcomFile::printFamilies() const
 
       std::cout << m_individuals.find(temp_find_wife)->second.m_name << "\t";
 
-      for (int child_itr = 0; child_itr < it->second.m_childIds.size(); ++child_itr)
+      if (0 == it->second.m_childIds.size())
       {
-         std::cout << " " << it->second.m_childIds[child_itr];
+         std::cout << "   NA";
+      }
+      else
+      {
+         for (int child_itr = 0; child_itr < it->second.m_childIds.size(); ++child_itr)
+         {
+            std::cout << " " << it->second.m_childIds[child_itr];
+         }
       }
 
-      std::cout << "\t\t";
-
-      std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
+      std::cout << "\n--------------------------------------------------------------------------------------------------------------" << std::endl;
    }
 
-   std::cout << "*====================================================================*" << std::endl;
+   std::cout << "*===============================================================================================================*" << std::endl;
    
 }
