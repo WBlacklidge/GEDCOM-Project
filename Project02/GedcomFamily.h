@@ -22,8 +22,12 @@ namespace Utils
          std::string m_id;
          /** The ID of the husband belonging to this family. */
          std::string m_husbandId;
+         /** The name of the husband belonging to this family. */
+         std::string m_husbandName;
          /** The ID of the wife belonging to this family. */
          std::string m_wifeId;
+         /** The name of the wife belonging to this family. */
+         std::string m_wifeName;
          /** A vector containing a list of children belonging to this family. */
          std::vector<std::string> m_childIds;
          /** The date the husband and wife got married in Day/Month/Year format. */
@@ -35,10 +39,19 @@ namespace Utils
          /** Constructor. */
          GedcomFamily(std::string id,
             std::string husbandId,
+            std::string husbandName,
             std::string wifeId,
+            std::string wifeName,
             std::vector<std::string> childIds,
             std::string marriageDate,
             std::string divorceDate);
       };
+
+      /** Overloads the << operator for easier printing.
+      * @return output stream
+      * @param os output stream
+      * @param indv The individual that is being printed. */
+      std::ostream& operator<<(std::ostream& os,
+         const GedcomFamily& indv);
    }
 }

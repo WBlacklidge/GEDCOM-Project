@@ -6,6 +6,8 @@
 */
 #include "GedcomFile.h"
 
+#include <iostream>
+
 /** The main point of execution. 
 * @param argc The number of argumenets. 
 * @param argv An array of strings (char*) that is argc-sized. 
@@ -32,6 +34,9 @@ int main(int argc, char* argv[])
 
    // Will print all of the individuals in the GEDCOM file in descending order based on ID.
    my_file.printIndividualsInDescendingId();
+
+   // Put some space between the two prints, easier on the eyes.
+   std::cout << "\n\n\n";
 
    // Will print all of the families in the GEDCOM file in descending order based on ID.
    my_file.printFamiliesInDescendingId();

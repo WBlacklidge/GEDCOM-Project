@@ -257,7 +257,9 @@ bool GedcomFile::readLines()
             id.erase(std::remove(id.begin(), id.end(), '@'), id.end());
 
             std::string husband_id;
+            std::string husband_name;
             std::string wife_id;
+            std::string wife_name;
             std::vector<std::string> child_ids;
 
             std::string marriage_date;
@@ -272,12 +274,28 @@ bool GedcomFile::readLines()
                if ("HUSB" == it->getTag())
                {
                   husband_id = it->getArguements();
+
+                  // Get the husband name from the individuals map.
+                  std::string temp_find_husb(husband_id);
+                  temp_find_husb.erase(std::remove(temp_find_husb.begin(), temp_find_husb.end(), '@'), 
+                     temp_find_husb.end());
+
+                  husband_name = m_individuals.find(temp_find_husb)->second.m_name;
+
                   it++;
                   continue;
                }
                else if ("WIFE" == it->getTag())
                {
                   wife_id = it->getArguements();
+
+                  // Get the wife name from the individuals map.
+                  std::string temp_find_wife(wife_id);
+                  temp_find_wife.erase(std::remove(temp_find_wife.begin(), temp_find_wife.end(), '@'),
+                     temp_find_wife.end());
+
+                  wife_name = m_individuals.find(temp_find_wife)->second.m_name;
+
                   it++;
                   continue;
                }
@@ -334,7 +352,9 @@ bool GedcomFile::readLines()
             // Create an individual and insert it into the map.
             GedcomFamily temp(id,
                husband_id,
+               husband_name,
                wife_id,
+               wife_name,
                child_ids,
                marriage_date,
                divorce_date);
@@ -383,42 +403,7 @@ void GedcomFile::printIndividualsInDescendingId() const
    std::map<std::string, GedcomIndividual>::const_iterator it;
    for (it = m_individuals.begin(); it != m_individuals.end(); ++it)
    {
-      std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-      std::cout << it->first << "\t";
-      std::cout << it->second.m_name << "\t";
-      const char gender_char = it->second.m_genderFemale ? 'F' : 'M';
-      std::cout << gender_char << "\t";
-      std::cout << it->second.m_birthday << "\t\t";
-      std::cout << it->second.m_age << "\t";
-      const char alive_char = it->second.m_isAlive ? 'Y' : 'N';
-      std::cout << alive_char << "\t";
-      if (it->second.m_deathday.size() <= 0)
-      {
-         std::cout << "NA\t\t";
-      }
-      else
-      {
-         std::cout << it->second.m_deathday << "\t";
-      }
-      
-      if (it->second.m_childIds.size() <= 0)
-      {
-         std::cout << "NA\t\t";
-      }
-      else
-      {
-         std::cout << it->second.m_childIds << "\t\t";
-      }
-
-      if (it->second.m_spouseId.size() <= 0)
-      {
-         std::cout << "NA\t\t";
-      }
-      else
-      {
-         std::cout << it->second.m_spouseId << "\t\t";
-      }
-      std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
+      std::cout << it->second;
    }
 
    std::cout << "*===============================================================================================================*" << std::endl;
@@ -428,53 +413,12 @@ void GedcomFile::printFamiliesInDescendingId() const
 {
    std::cout << "*===============================================================================================================*" << std::endl;
    std::cout << "|ID:\t|Married:     |Div:  |Husband ID:\t|Husband Name:\t|Wife ID:\t|Wife Name:\t|Children:\t\t";
-   std::cout << "\n*===============================================================================================================*" << std::endl;
+   std::cout << "*===============================================================================================================*" << std::endl;
 
    std::map<std::string, GedcomFamily>::const_iterator it;
    for (it = m_families.begin(); it != m_families.end(); ++it)
    {
-      std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-      std::cout << it->first << "\t";
-      if (it->second.m_marriageDate.size() == 0)
-      {
-         std::cout << "NA\t\t";
-      }
-      else
-      {
-         std::cout << it->second.m_marriageDate << "\t";
-      }
-      
-      const std::string divorce_date = it->second.m_divorceDate.size() == 0 ? "NA" : it->second.m_divorceDate;
-      std::cout << divorce_date << "\t";
-      std::cout << it->second.m_husbandId << "\t\t";
-
-      std::string temp_find_husb(it->second.m_husbandId);
-      temp_find_husb.erase(std::remove(temp_find_husb.begin(), temp_find_husb.end(), '@'), temp_find_husb.end());
-
-      // Get the husband name from the other map.
-      std::cout << m_individuals.find(temp_find_husb)->second.m_name << "\t";
-
-      std::cout << it->second.m_wifeId << "\t\t";
-
-      // Get the husband name from the other map.
-      std::string temp_find_wife(it->second.m_wifeId);
-      temp_find_wife.erase(std::remove(temp_find_wife.begin(), temp_find_wife.end(), '@'), temp_find_wife.end());
-
-      std::cout << m_individuals.find(temp_find_wife)->second.m_name << "\t";
-
-      if (0 == it->second.m_childIds.size())
-      {
-         std::cout << "   NA";
-      }
-      else
-      {
-         for (int child_itr = 0; child_itr < it->second.m_childIds.size(); ++child_itr)
-         {
-            std::cout << " " << it->second.m_childIds[child_itr];
-         }
-      }
-
-      std::cout << "\n--------------------------------------------------------------------------------------------------------------" << std::endl;
+      std::cout << it->second;
    }
 
    std::cout << "*===============================================================================================================*" << std::endl;

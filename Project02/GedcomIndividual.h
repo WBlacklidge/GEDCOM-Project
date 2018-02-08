@@ -49,5 +49,13 @@ namespace Utils
             std::string childIds,
             std::string spouseId);
       };
+
+      /** Overloads the << operator for easier printing.
+      * @return output stream
+      * @param os output stream
+      * @param indv The individual that is being printed. */
+      std::ostream& operator<<(std::ostream& os,
+         const GedcomIndividual& indv);
+  
    }
 }
