@@ -11,6 +11,8 @@
 #include "GedcomFile.h"
 using namespace Utils::Gedcom;
 
+#include "ErrorReporting.h"
+
 #include <iostream>
 
 #include <algorithm>
@@ -34,6 +36,7 @@ bool GedcomFile::open(const std::string& filename)
 
    if (!m_file.is_open())
    {
+      reportError("File failed to open.", __FUNCTION__);
       return false;
    }
 
@@ -55,14 +58,18 @@ bool GedcomFile::readLines()
    // If the file isn't open we can't read anything
    if (!m_file.is_open())
    {
+      reportError("File is not open, can't read lines.", __FUNCTION__);
       return false;
    }
 
+   // Keep track of line numbers.
+   unsigned int current_line_number = 1;
    // Store every line.
    while (std::getline(m_file, line))
    {
-	   GedcomObject temp(line);
+	   GedcomObject temp(line, current_line_number);
       m_fields.push_back(temp);
+      current_line_number++;
    }
 
    // Now that we have each line, extract the individuals and family.
@@ -179,17 +186,19 @@ bool GedcomFile::readLines()
                      struct tm buf;
                      localtime_s(&buf, &t);
 
-                     std::string::size_type sz;   
+                     // Stores the returned size from stoi.
+                     std::string::size_type size;   
 
+                     // Convert the string to integer
+                     const int n_year = std::stoi(year, &size);
 
-                     int n_year = std::stoi(year, &sz);
-
+                     // The year is from 1900.  Subtract birthday from this date. 
                      age = (buf.tm_year + 1900) - n_year;
                   }
                   else
                   {
                      // This is bad, we somehow got an invalid DATE record.
-                     std::cout << "Invalid Date Record" << std::endl;
+                     reportError("Invalid Data Record Line# "+it->getLineNumber(), __FUNCTION__);
                   }
 
                   it++;
@@ -210,7 +219,7 @@ bool GedcomFile::readLines()
                   else
                   {
                      // This is bad, we somehow got an invalid DATE record.
-                     std::cout << "Invalid Date Record" << std::endl;
+                     reportError("Invalid Data Record Line# " + it->getLineNumber(), __FUNCTION__);
                   }
 
                   it++;
@@ -317,7 +326,7 @@ bool GedcomFile::readLines()
                   else
                   {
                      // This is bad, we somehow got an invalid DATE record.
-                     std::cout << "Invalid Date Record" << std::endl;
+                     reportError("Invalid Data Record Line# " + it->getLineNumber(), __FUNCTION__);
                   }
 
                   it++;
@@ -335,7 +344,7 @@ bool GedcomFile::readLines()
                   else
                   {
                      // This is bad, we somehow got an invalid DATE record.
-                     std::cout << "Invalid Date Record" << std::endl;
+                     reportError("Invalid Data Record Line# " + it->getLineNumber(), __FUNCTION__);
                   }
                   it++;
                   continue;
@@ -368,7 +377,6 @@ bool GedcomFile::readLines()
          continue;
       }
    }
-
 
    // Get a line of data from the file
    if (m_file.good())

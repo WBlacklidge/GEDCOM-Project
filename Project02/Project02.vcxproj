@@ -150,6 +150,7 @@
     <ClInclude Include="GedcomIndividual.h" />
     <ClInclude Include="GedcomFile.h" />
     <ClInclude Include="GedcomObject.h" />
+    <ClInclude Include="ErrorReporting.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GedcomFamily.cpp" />

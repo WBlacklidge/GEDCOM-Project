@@ -12,10 +12,12 @@
 using namespace Utils::Gedcom;
 
 #include <iostream>
-GedcomObject::GedcomObject(std::string& line) : m_level(0),
+GedcomObject::GedcomObject(std::string& line,
+   unsigned int lineNumber) : m_level(0),
 m_id(""),
 m_isValid(false)
 {
+   m_lineNumber = lineNumber;
    m_rawLine = line;
    parse();
 }
@@ -251,4 +253,9 @@ std::string GedcomObject::getTag() const
 std::string GedcomObject::getArguements() const
 {
    return m_arguments;
+}
+
+unsigned int GedcomObject::getLineNumber() const
+{
+   return m_lineNumber;
 }

@@ -44,7 +44,8 @@ namespace Utils
       public:
          /** Constructor
          * @param line The line to parse */
-         GedcomObject(std::string& line);
+         GedcomObject(std::string& line,
+            unsigned int lineNumber);
 
          /** Destructor */
          ~GedcomObject();
@@ -77,6 +78,10 @@ namespace Utils
          /** Get arguements */
          std::string getArguements() const;
 
+         /** Get the line number
+         * @return the line number this GEDCOM object was a created from. */
+         unsigned int getLineNumber() const;
+
       private:
          /** Parse the string. */
          void parse();
@@ -98,6 +103,9 @@ namespace Utils
 
          /** The rest of the line beyond the level and tag. */
          std::string m_arguments;
+
+         /** The line number this gedcom object was a created from. */
+         unsigned int m_lineNumber;
 
          /** Will check that the tag and and level are compatible.
          * @param tag The string tag.
