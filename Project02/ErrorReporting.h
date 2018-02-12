@@ -6,6 +6,7 @@
 * @brief This file will have utility functions for reporting errors.
 */
 #include <iostream>
+#include <sstream>
 #include <string>
 namespace Utils
 {
@@ -18,20 +19,24 @@ namespace Utils
       * must be provided in the calling function so a default can't be provided here.
       * @param lineNumber The lineNumber that the error was reported.
       * @fileName The file where the error occured. */
-      static void reportError(std::string errorInfo,
+      void reportError(
+         std::ostringstream& str,
+         std::string errorInfo,
          std::string functionName,
          int lineNumber = __LINE__,
          std::string fileName = __FILE__,
          std::string date = __DATE__,
          std::string time = __TIME__)
       {
-         std::cout << "***An error occured***" << std::endl;
-         std::cout << "File: " << fileName << std::endl;
-         std::cout << "Function: " << functionName << std::endl;
-         std::cout << "Line#:" << lineNumber << std::endl;
-         std::cout << "What: " << errorInfo << std::endl;
-         std::cout << "When: " << date << " " << time << std::endl;
-         std::cout << "*********************" << std::endl;
+         str << "***An error occured************************************************" << std::endl;
+         str << "File: " << fileName << std::endl;
+         str << "Function: " << functionName << std::endl;
+         str << "Line#:" << lineNumber << std::endl;
+         str << "What: " << errorInfo << std::endl;
+         str << "When: " << date << " " << time << std::endl;
+         str << "******************************************************************" << std::endl;
+
+         std::cout << str.str() << std::endl;
       }
    }
 }

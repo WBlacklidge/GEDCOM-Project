@@ -5,9 +5,8 @@
 * @brief   This will test error printing.
 *
 */
-
 #include "gtest/gtest.h"
-
+#include "ErrorReporting.h"
 
 namespace
 {
@@ -35,10 +34,46 @@ namespace
       virtual void TearDown()
       {
       }
+
+      /** Test for function name.  
+      */
+      void TestFunction(std::string& output)
+      {
+         // Give a line number that is something static we 
+         // can test for later.
+         const int line = 2408;
+         std::ostringstream os;
+         Utils::Gedcom::reportError(os, 
+            "This is just a test", 
+            __FUNCTION__,
+            line,
+            __FILE__);
+
+         output = os.str();
+      }
    };
 
-   TEST_F(PrintErrorTest, ToStringBool)
+   TEST_F(PrintErrorTest, TestFunctionName)
    {
-      EXPECT_TRUE(true);
+      bool passed_test = false;
+      std::string temp;
+      TestFunction(temp);
+      EXPECT_TRUE(std::string::npos != temp.find("TestFunction", 0));
+   }
+
+   TEST_F(PrintErrorTest, TestLineNumber)
+   {
+      bool passed_test = false;
+      std::string temp;
+      TestFunction(temp);
+      EXPECT_TRUE(std::string::npos != temp.find("2408", 0));
+   }
+
+   TEST_F(PrintErrorTest, TestFileName)
+   {
+      bool passed_test = false;
+      std::string temp;
+      TestFunction(temp);
+      EXPECT_TRUE(std::string::npos != temp.find("print_error_test.cpp", 0));
    }
 }
