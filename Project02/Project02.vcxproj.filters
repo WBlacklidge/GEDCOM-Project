@@ -15,36 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GedcomFile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GedcomObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GedcomIndividual.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GedcomFamily.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ErrorReporting.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="GedcomFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GedcomObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GedcomIndividual.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GedcomFamily.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

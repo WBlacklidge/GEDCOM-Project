@@ -103,8 +103,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../GedcomLib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,17 +149,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GedcomFamily.h" />
-    <ClInclude Include="GedcomIndividual.h" />
-    <ClInclude Include="GedcomFile.h" />
-    <ClInclude Include="GedcomObject.h" />
-    <ClInclude Include="ErrorReporting.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="GedcomFamily.cpp" />
-    <ClCompile Include="GedcomIndividual.cpp" />
-    <ClCompile Include="GedcomFile.cpp" />
-    <ClCompile Include="GedcomObject.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

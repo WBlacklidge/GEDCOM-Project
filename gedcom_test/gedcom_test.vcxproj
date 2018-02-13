@@ -76,12 +76,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../external/include;../external/include/internal;../Project02</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../external/include;../external/include/internal;../GedcomStaticLib</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GTEST_HAS_TR1_TUPLE=0;GTEST_USE_OWN_TR1_TUPLE=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>../external/lib64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtestd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gtestd.lib;gedcomstaticlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
