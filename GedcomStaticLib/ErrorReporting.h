@@ -42,7 +42,7 @@ namespace Utils
          if (toFile)
          {
             std::ofstream my_file;
-            my_file.open("C:/log/log.txt");
+            my_file.open("data/log.txt");
             my_file << str.str();
             my_file.close();
          }

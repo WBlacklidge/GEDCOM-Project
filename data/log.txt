@@ -1,0 +1,7 @@
+***An error occured************************************************
+File: c:\workspace\project\gedcom-project\gedcomstaticlib\errorreporting.h
+Function: Utils::Gedcom::GedcomFile::readLines
+Line#:26
+What: Invalid Data Record Line# 22
+When: Feb 19 2018 18:10:12
+******************************************************************

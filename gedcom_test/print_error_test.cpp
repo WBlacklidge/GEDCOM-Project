@@ -77,7 +77,7 @@ namespace
    {
       // Empty out the log.
       std::ofstream my_file;
-      my_file.open("C:/log/log.txt", std::ios::trunc);
+      my_file.open("data/log.txt", std::ios::trunc);
       my_file.close();
       // Log is now empty
 
@@ -87,7 +87,7 @@ namespace
       std::string does_not_matter;
       TestFunction(does_not_matter);
 
-      std::ifstream input_file("C:/log/log.txt", std::ifstream::binary);
+      std::ifstream input_file("data/log.txt", std::ifstream::binary);
 
       input_file.clear();
       if (input_file)
@@ -121,11 +121,11 @@ namespace
    {
       // Empty out the log.
       std::ofstream log_file;
-      log_file.open("C:/log/log.txt", std::ios::trunc);
+      log_file.open("data/log.txt", std::ios::trunc);
       log_file.close();
       // Log is now empty
 
-      std::string ged_file = "C:\\workspace\\project\\GEDCOM-project\\data\\print_error_test.ged"; 
+      std::string ged_file = "data/print_error_test.ged"; 
 
       // Using the file path, create a GedcomFile object.
       Utils::Gedcom::GedcomFile my_file(ged_file);
@@ -133,7 +133,7 @@ namespace
       // Read each line from the GedComFile and save it.
       my_file.readLines();
 
-      std::ifstream input_file("C:/log/log.txt", std::ifstream::binary);
+      std::ifstream input_file("data/log.txt", std::ifstream::binary);
 
       if (input_file)
       {

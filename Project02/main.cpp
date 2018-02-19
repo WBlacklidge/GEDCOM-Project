@@ -15,7 +15,7 @@
 int main(int argc, char* argv[])
 {
    // TODO: I haven't tested passing in a command line value, so the string is hardcoded.
-   std::string ged_file = "..\\data\\Family-2-6-Feb-2018-553.ged"; //"..\\data\\proj02test.ged";
+   std::string ged_file = "data\\Family-2-6-Feb-2018-553.ged"; //"..\\data\\proj02test.ged";
    
    // Accepts an absolute path to a file...
    if (1 < argc)
