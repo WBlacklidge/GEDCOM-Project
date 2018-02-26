@@ -257,7 +257,26 @@ bool GedcomFile::readLines()
                deathday, 
                child, 
                spouse);
-            m_individuals.insert(std::pair<std::string, GedcomIndividual>(id, temp));
+
+
+            // Check that the Indv ID is not already in the map.
+            std::map<std::string, GedcomIndividual>::iterator it_find;
+
+            // See if we can find the indv
+            it_find = m_individuals.find(id);
+
+            // m_families.end() means it wasn't found.
+            if (it_find != m_individuals.end())
+            {
+               // We found the family already.
+               // Don't add and log an error.
+               std::string temp = "Indvidual with ID: " + id + " already exists.";
+               reportError(temp, __FUNCTION__);
+            }
+            else
+            {
+               m_individuals.insert(std::pair<std::string, GedcomIndividual>(id, temp));
+            }
          }
          else if (it->getTag() == "FAM")
          {
@@ -290,7 +309,18 @@ bool GedcomFile::readLines()
                   temp_find_husb.erase(std::remove(temp_find_husb.begin(), temp_find_husb.end(), '@'), 
                      temp_find_husb.end());
 
-                  husband_name = m_individuals.find(temp_find_husb)->second.m_name;
+                  // Check that the Family ID is not already in the map.
+                  std::map<std::string, GedcomIndividual>::iterator it_find_husband;
+                  it_find_husband = m_individuals.find(temp_find_husb);
+                  if (it_find_husband == m_individuals.end())
+                  {
+                     std::string temp = "Could not find Husband ID: " + temp_find_husb + ".";
+                     reportError(temp, __FUNCTION__);
+                  }
+                  else
+                  {
+                     husband_name = it_find_husband->second.m_name;
+                  }
 
                   it++;
                   continue;
@@ -304,7 +334,18 @@ bool GedcomFile::readLines()
                   temp_find_wife.erase(std::remove(temp_find_wife.begin(), temp_find_wife.end(), '@'),
                      temp_find_wife.end());
 
-                  wife_name = m_individuals.find(temp_find_wife)->second.m_name;
+                  // Check that the Family ID is not already in the map.
+                  std::map<std::string, GedcomIndividual>::iterator it_find_wife;
+                  it_find_wife = m_individuals.find(temp_find_wife);
+                  if (it_find_wife == m_individuals.end())
+                  {
+                     std::string temp = "Could not find Wife ID: " + temp_find_wife + ".";
+                     reportError(temp, __FUNCTION__);
+                  }
+                  else
+                  {
+                     wife_name = it_find_wife->second.m_name;
+                  }
 
                   it++;
                   continue;
@@ -369,7 +410,24 @@ bool GedcomFile::readLines()
                marriage_date,
                divorce_date);
 
-            m_families.insert(std::pair<std::string, GedcomFamily>(id, temp));
+            // Check that the Family ID is not already in the map.
+            std::map<std::string, GedcomFamily>::iterator it_find;
+
+            // See if we can find the family
+            it_find = m_families.find(id);
+           
+            // m_families.end() means it wasn't found.
+            if (it_find != m_families.end())
+            {
+               // We found the family already.
+               // Don't add and log an error.
+               std::string temp = "Family with ID: " + id + " already exists.";
+               reportError(temp, __FUNCTION__);
+            }
+            else
+            {
+               m_families.insert(std::pair<std::string, GedcomFamily>(id, temp));
+            }
          }
       }
       else

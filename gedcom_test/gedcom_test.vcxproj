@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="print_error_test.cpp" />
     <ClCompile Include="test_main.cpp" />
+    <ClCompile Include="unique_id_test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

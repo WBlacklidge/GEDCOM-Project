@@ -21,5 +21,8 @@
     <ClCompile Include="print_error_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="unique_id_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

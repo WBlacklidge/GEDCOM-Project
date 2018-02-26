@@ -2,6 +2,6 @@
 File: c:\workspace\project\gedcom-project\gedcomstaticlib\errorreporting.h
 Function: Utils::Gedcom::GedcomFile::readLines
 Line#:26
-What: Invalid Data Record Line# 22
-When: Feb 19 2018 18:10:12
+What: Family with ID: F1 already exists.
+When: Feb 24 2018 13:58:23
 ******************************************************************
