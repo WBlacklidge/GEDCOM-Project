@@ -36,7 +36,7 @@ bool GedcomFile::open(const std::string& filename)
 
    if (!m_file.is_open())
    {
-      reportError("File failed to open.", __FUNCTION__);
+      reportError("NA", ObjectType::e_other, "File failed to open.", -1, __FUNCTION__);
       return false;
    }
 
@@ -58,7 +58,7 @@ bool GedcomFile::readLines()
    // If the file isn't open we can't read anything
    if (!m_file.is_open())
    {
-      reportError("File is not open, can't read lines.", __FUNCTION__);
+      reportError("NA", ObjectType::e_other, "File is not open, can't read lines.", -1, __FUNCTION__);
       return false;
    }
 
@@ -198,8 +198,8 @@ bool GedcomFile::readLines()
                   else
                   {
                      // This is bad, we somehow got an invalid DATE record.
-                     std::string temp = "Invalid Data Record Line# " + std::to_string(it->getLineNumber());
-                     reportError(temp, __FUNCTION__);
+                     reportError("NA", ObjectType::e_indv, 
+                        "Invalid Date Record", it->getLineNumber(), __FUNCTION__);
                   }
 
                   it++;
@@ -220,7 +220,8 @@ bool GedcomFile::readLines()
                   else
                   {
                      // This is bad, we somehow got an invalid DATE record.
-                     reportError("Invalid Data Record Line# " + it->getLineNumber(), __FUNCTION__);
+                     reportError("NA", ObjectType::e_indv,
+                        "Invalid Date Record", it->getLineNumber(), __FUNCTION__);
                   }
 
                   it++;
@@ -258,7 +259,6 @@ bool GedcomFile::readLines()
                child, 
                spouse);
 
-
             // Check that the Indv ID is not already in the map.
             std::map<std::string, GedcomIndividual>::iterator it_find;
 
@@ -268,10 +268,11 @@ bool GedcomFile::readLines()
             // m_families.end() means it wasn't found.
             if (it_find != m_individuals.end())
             {
-               // We found the family already.
+               // We found the Indv already.
                // Don't add and log an error.
-               std::string temp = "Indvidual with ID: " + id + " already exists.";
-               reportError(temp, __FUNCTION__);
+               reportError("US22", ObjectType::e_indv,
+                  "Indvidual with ID: " + id + " already exists.",
+                  it->getLineNumber(), __FUNCTION__);
             }
             else
             {
@@ -314,8 +315,9 @@ bool GedcomFile::readLines()
                   it_find_husband = m_individuals.find(temp_find_husb);
                   if (it_find_husband == m_individuals.end())
                   {
-                     std::string temp = "Could not find Husband ID: " + temp_find_husb + ".";
-                     reportError(temp, __FUNCTION__);
+                     reportError("NA", ObjectType::e_fam,
+                        "Could not find Husband ID: " + temp_find_husb,
+                        it->getLineNumber(), __FUNCTION__);
                   }
                   else
                   {
@@ -339,8 +341,9 @@ bool GedcomFile::readLines()
                   it_find_wife = m_individuals.find(temp_find_wife);
                   if (it_find_wife == m_individuals.end())
                   {
-                     std::string temp = "Could not find Wife ID: " + temp_find_wife + ".";
-                     reportError(temp, __FUNCTION__);
+                     reportError("NA", ObjectType::e_fam,
+                        "Could not find Wife ID: " + temp_find_wife,
+                        it->getLineNumber(), __FUNCTION__);
                   }
                   else
                   {
@@ -368,7 +371,9 @@ bool GedcomFile::readLines()
                   else
                   {
                      // This is bad, we somehow got an invalid DATE record.
-                     reportError("Invalid Data Record Line# " + it->getLineNumber(), __FUNCTION__);
+                     reportError("NA", ObjectType::e_fam,
+                        "Invalid Date Record",
+                        it->getLineNumber(), __FUNCTION__);
                   }
 
                   it++;
@@ -386,7 +391,9 @@ bool GedcomFile::readLines()
                   else
                   {
                      // This is bad, we somehow got an invalid DATE record.
-                     reportError("Invalid Data Record Line# " + it->getLineNumber(), __FUNCTION__);
+                     reportError("NA", ObjectType::e_fam,
+                        "Invalid Date Record",
+                        it->getLineNumber(), __FUNCTION__);
                   }
                   it++;
                   continue;
@@ -423,6 +430,11 @@ bool GedcomFile::readLines()
                // Don't add and log an error.
                std::string temp = "Family with ID: " + id + " already exists.";
                reportError(temp, __FUNCTION__);
+
+               // This is bad, we somehow got an invalid DATE record.
+               reportError("NA", ObjectType::e_fam,
+                  "Invalid Date Record",
+                  it->getLineNumber(), __FUNCTION__);
             }
             else
             {

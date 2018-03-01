@@ -15,10 +15,10 @@ namespace
    class PrintErrorTest : public ::testing::Test
    {
    public:
-
+      int m_testNumber;
    protected:
       /** Constructor. */
-      PrintErrorTest()
+      PrintErrorTest() : m_testNumber(40)
       {
       }
 
@@ -97,7 +97,7 @@ namespace
          int length = input_file.tellg();
          input_file.seekg(0, input_file.beg);
 
-         char * buffer = new char[length];
+         char* buffer = new char[length];
 
          std::cout << "Reading " << length << " characters... ";
          // read data as a block:
