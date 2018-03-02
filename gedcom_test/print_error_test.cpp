@@ -45,7 +45,10 @@ namespace
          const int line = 2408;
 
          output = Utils::Gedcom::reportError(
+            "US40",
+            Utils::Gedcom::ObjectType::e_other,
             "This is just a test",
+            line,
             __FUNCTION__,
             line,
             __FILE__);

@@ -428,12 +428,8 @@ bool GedcomFile::readLines()
             {
                // We found the family already.
                // Don't add and log an error.
-               std::string temp = "Family with ID: " + id + " already exists.";
-               reportError(temp, __FUNCTION__);
-
-               // This is bad, we somehow got an invalid DATE record.
-               reportError("NA", ObjectType::e_fam,
-                  "Invalid Date Record",
+               reportError("US22", ObjectType::e_fam,
+                  "Family with ID: " + id + " already exists.",
                   it->getLineNumber(), __FUNCTION__);
             }
             else

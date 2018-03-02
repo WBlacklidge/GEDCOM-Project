@@ -4,5 +4,6 @@
     <LocalDebuggerWorkingDirectory>$(SolutionDir)</LocalDebuggerWorkingDirectory>
     <LocalDebuggerEnvironment>PATH=external\lib64;%PATH%</LocalDebuggerEnvironment>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>--gtest_filter=PrintErrorTest.*</LocalDebuggerCommandArguments>
   </PropertyGroup>
 </Project>

@@ -1,7 +1,7 @@
-***An error occured************************************************
+
+ERROR: INDIVIDUAL: NA: 22: 
 File: c:\workspace\project\gedcom-project\gedcomstaticlib\errorreporting.h
 Function: Utils::Gedcom::GedcomFile::readLines
-Line#:26
-What: Family with ID: F1 already exists.
-When: Feb 24 2018 13:58:23
-******************************************************************
+Code Line#:30
+What: Invalid Date Record
+When: Mar  1 2018 19:01:27
