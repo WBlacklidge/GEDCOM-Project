@@ -9,6 +9,7 @@
 */
 #include <ctime>
 #include "GedcomFile.h"
+#include "Utils.h"
 using namespace Utils::Gedcom;
 
 #include "ErrorReporting.h"
@@ -139,61 +140,23 @@ bool GedcomFile::readLines()
 
                   if ("DATE" == it->getTag())
                   {
+                     int birth_year, birth_month, birth_day;
+                     int curr_year, curr_month, curr_day;
+                     
                      birthday = it->getArguements();
-
-                     // parse out the birthday
-                     // String used to temporarily hold the parts of the birthday object.
-                     std::string month, day, year;
-
-                     // Search until we get to the first space.  Everything to the left is the level.
-                     size_t position = birthday.find(' ');
-
-                     // Position now contains the location of the end of the first attribute, level.
-                     // Each character to the left of this position is the integer.
-                     day = birthday.substr(0, position);
-
-                     // When level is 0 the tag and ID can be in either position.
-
-                     // Keep track of where we are starting.
-                     const size_t start_of_month = position + 1;
-
-                     // Keep track of the end position
-                     size_t end_of_month = 0;
-
-                     // Search for the next space in the line.
-                     position = birthday.find(' ', start_of_month);
-                     end_of_month = position;
-
-                     // Now get the month.
-                     month = birthday.substr(start_of_month, end_of_month - start_of_month);
-
-                     // Keep track of where we are starting.
-                     const size_t start_of_year = position + 1;
-
-                     // Keep track of the end position
-                     size_t end_of_year = 0;
-
-                     // Search for the next space in the line.
-                     position = birthday.find(' ', start_of_year);
-                     end_of_year = position;
-
-                     // Now get the month.
-                     year = birthday.substr(start_of_year, end_of_year - start_of_year);
-
-
-                     // since we have a birthday we can calculate age using it.
-                     time_t t = time(0);
-                     struct tm buf;
-                     localtime_s(&buf, &t);
-
-                     // Stores the returned size from stoi.
-                     std::string::size_type size;   
-
-                     // Convert the string to integer
-                     const int n_year = std::stoi(year, &size);
+                     getYearMonthDayFromDateString(birthday, birth_year, birth_month, birth_day);
+                     getCurrentYearMonthDay(curr_year, curr_month, curr_day);
 
                      // The year is from 1900.  Subtract birthday from this date. 
-                     age = (buf.tm_year + 1900) - n_year;
+                     age = curr_year - birth_year;
+
+                     // If someone is 150 or older after this calculation something went wrong.
+                     if (age >= 150)
+                     {
+                        // This is bad, we somehow got an invalid DATE record.
+                        reportError("NA", ObjectType::e_indv,
+                           "Invalid Date Record", it->getLineNumber(), __FUNCTION__);
+                     }
                   }
                   else
                   {
