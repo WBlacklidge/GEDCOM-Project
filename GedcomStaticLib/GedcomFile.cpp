@@ -140,23 +140,7 @@ bool GedcomFile::readLines()
 
                   if ("DATE" == it->getTag())
                   {
-                     int birth_year, birth_month, birth_day;
-                     int curr_year, curr_month, curr_day;
-                     
                      birthday = it->getArguements();
-                     getYearMonthDayFromDateString(birthday, birth_year, birth_month, birth_day);
-                     getCurrentYearMonthDay(curr_year, curr_month, curr_day);
-
-                     // The year is from 1900.  Subtract birthday from this date. 
-                     age = curr_year - birth_year;
-
-                     // If someone is 150 or older after this calculation something went wrong.
-                     if (age >= 150)
-                     {
-                        // This is bad, we somehow got an invalid DATE record.
-                        reportError("NA", ObjectType::e_indv,
-                           "Invalid Date Record", it->getLineNumber(), __FUNCTION__);
-                     }
                   }
                   else
                   {
@@ -209,6 +193,71 @@ bool GedcomFile::readLines()
                   continue;
                }
             }
+
+            // Before we add, error check the individual.
+            int birth_year, birth_month, birth_day;
+            int curr_year, curr_month, curr_day;
+            Gedcom::Utility::getYearMonthDayFromDateString(birthday, birth_year, birth_month, birth_day);
+            Gedcom::Utility::getCurrentYearMonthDay(curr_year, curr_month, curr_day);
+
+            // If the birthday is not valid report an error.
+            if (!Gedcom::Utility::isValidDate(birth_year, birth_month, birth_day))
+            {
+               // This individual is over 150.  Report this as an error.
+               reportError("US42", ObjectType::e_indv,
+                  "Living INDV named " + name + " has an invalid birthday " + birthday, it->getLineNumber(), __FUNCTION__);
+            }
+
+            // The year is from 1900.  Subtract birthday from this date. 
+            age = curr_year - birth_year;
+
+            // If someone is 150 or older after this calculation something went wrong.
+            // We do !is_alive because if someone is dead we don't want to compare the
+            // current date to their birth.
+            if (age >= 150 && is_alive)
+            {
+               // This individual is over 150.  Report this as an error.
+               reportError("US07", ObjectType::e_indv,
+                  "Living INDV named " + name + " age calculated as >= 150", it->getLineNumber(), __FUNCTION__);
+            }
+
+            if (!is_alive)
+            {
+               // Was this person over 150 years old between birth and death?
+               int death_year, death_month, death_day;
+
+               Gedcom::Utility::getYearMonthDayFromDateString(birthday, birth_year, birth_month, birth_day);
+               Gedcom::Utility::getYearMonthDayFromDateString(deathday, death_year, death_month, death_day);
+
+               // If the birthday is not valid report an error.
+               if (!Gedcom::Utility::isValidDate(death_year, death_month, death_day))
+               {
+                  // This individual is over 150.  Report this as an error.
+                  reportError("US42", ObjectType::e_indv,
+                     "INDV named " + name + " has an invalid death date " + deathday, it->getLineNumber(), __FUNCTION__);
+               }
+
+               if ((death_year - birth_year) >= 150)
+               {
+                  // This individual is over 150.  Report this as an error.
+                  reportError("US07", ObjectType::e_indv,
+                     "Dead INDV named " + name + " age calculated as >= 150", it->getLineNumber(), __FUNCTION__);
+               }
+            }
+
+            // If birthday and name match something went wrong.
+            std::map<std::string, GedcomIndividual>::const_iterator check_it;
+            for (check_it = m_individuals.begin(); check_it != m_individuals.end(); ++check_it)
+            {
+               if ((*check_it).second.m_name == name &&
+                  (*check_it).second.m_birthday == birthday)
+               {
+                  // More than one person has the same name and birthday.
+                  reportError("US23", ObjectType::e_indv,
+                     "INDV named " + name + " has identical name and birthday as an already processed individual.", it->getLineNumber(), __FUNCTION__);
+               }
+            }
+            
 
             // We left the while loop which means we hit another 0.
             // Create an individual and insert it into the map.

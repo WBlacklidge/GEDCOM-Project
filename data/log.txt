@@ -1,7 +1,7 @@
 
-ERROR: INDIVIDUAL: NA: 22: 
+ERROR: INDIVIDUAL: US42: 34: 
 File: c:\workspace\project\gedcom-project\gedcomstaticlib\errorreporting.h
 Function: Utils::Gedcom::GedcomFile::readLines
 Code Line#:30
-What: Invalid Date Record
-When: Mar  1 2018 19:01:27
+What: Living INDV named Kathryn Johnson has an invalid birthday 29 FEB 1988
+When: Mar  5 2018 17:53:56

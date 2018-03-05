@@ -15,7 +15,7 @@
 int main(int argc, char* argv[])
 {
    // TODO: I haven't tested passing in a command line value, so the string is hardcoded.
-   std::string ged_file = "data\\unique_id_test.ged";
+   std::string ged_file = "data\\invalid_dates_test.ged";
       
    //"\\data\\proj02test.ged"; 
    // "\\data\\unique_id_test.ged";

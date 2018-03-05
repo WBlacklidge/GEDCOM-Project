@@ -121,7 +121,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="birth_death_over_150_test.cpp" />
+    <ClCompile Include="invalid_dates_test.cpp" />
     <ClCompile Include="print_error_test.cpp" />
+    <ClCompile Include="same_name_birth_test.cpp" />
     <ClCompile Include="test_main.cpp" />
     <ClCompile Include="unique_id_test.cpp" />
   </ItemGroup>

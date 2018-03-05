@@ -161,6 +161,7 @@
     <ClCompile Include="GedcomFile.cpp" />
     <ClCompile Include="GedcomIndividual.cpp" />
     <ClCompile Include="GedcomObject.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

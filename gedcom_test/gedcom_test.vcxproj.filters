@@ -24,5 +24,14 @@
     <ClCompile Include="unique_id_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="invalid_dates_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="birth_death_over_150_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="same_name_birth_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
