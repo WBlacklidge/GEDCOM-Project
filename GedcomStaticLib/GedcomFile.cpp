@@ -468,7 +468,7 @@ bool GedcomFile::readLines()
    }
 }
 
-void GedcomFile::print() const
+void GedcomFile::printfile() const
 {
 	std::vector<GedcomObject>::const_iterator it;
 	for (it = m_fields.begin(); it != m_fields.end(); ++it)
@@ -510,4 +510,79 @@ void GedcomFile::printFamiliesInDescendingId() const
 
    std::cout << "*===============================================================================================================*" << std::endl;
    
+}
+
+void GedcomFile::printIndividualsUpcomingBirthdays() const
+{
+	std::cout << "*==========================================Upcoming Birthdays===================================================*" << std::endl;
+	std::cout << "*===============================================================================================================*" << std::endl;
+	std::cout << "|ID:\t|Name:\t\t|Gender:|Birthday:\t\t|Age:\t|Alive:\t|Death:\t\t|Child:\t\t|Spouse:";
+	std::cout << "\n*===============================================================================================================*" << std::endl;
+
+	std::map<std::string, GedcomIndividual>::const_iterator it;
+
+	std::string birthday;
+	int birth_year, birth_month, birth_day;
+	int curr_year, curr_month, curr_day;
+	
+	
+	for (it = m_individuals.begin(); it != m_individuals.end(); ++it)
+	{
+		
+		birthday = it->second.m_birthday;
+		
+		
+		Gedcom::Utility::getYearMonthDayFromDateString(birthday, birth_year, birth_month, birth_day);
+		Gedcom::Utility::getCurrentYearMonthDay(curr_year, curr_month, curr_day);
+		
+			
+		if ( (birth_day >= curr_day) && (birth_month >= curr_month) && (curr_year >= birth_year))
+		{
+
+				std::cout << it->second;
+		}
+	}
+
+	std::cout << "*===============================================================================================================*" << std::endl;
+}
+
+
+void GedcomFile::printIndividualsUpcomingAnnivarsaries() const
+{
+
+	std::cout << "*==========================================Upcoming Annivarsaries===================================================*" << std::endl;
+
+	std::cout << "*===============================================================================================================*" << std::endl;
+	std::cout << "|ID:\t|Name:\t\t|Gender:|Birthday:\t\t|Age:\t|Alive:\t|Death:\t\t|Child:\t\t|Spouse:";
+	std::cout << "\n*===============================================================================================================*" << std::endl;
+
+	std::map<std::string, GedcomIndividual>::const_iterator it;
+
+	std::string deathday;
+	int death_year, death_month, death_day;
+	int curr_year, curr_month, curr_day;
+
+
+	for (it = m_individuals.begin(); it != m_individuals.end(); ++it)
+	{
+
+
+
+		if (!it->second.m_isAlive)
+		{
+
+			deathday = it->second.m_deathday;
+
+			Gedcom::Utility::getYearMonthDayFromDateString(deathday, death_year, death_month, death_day);
+			Gedcom::Utility::getCurrentYearMonthDay(curr_year, curr_month, curr_day);
+
+			if ((death_day >= curr_day) && (death_month >= curr_month) && (curr_year >= death_year))
+			{
+
+				std::cout << it->second;
+			}
+		}
+	}
+
+	std::cout << "*===============================================================================================================*" << std::endl;
 }
