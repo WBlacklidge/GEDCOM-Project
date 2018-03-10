@@ -88,13 +88,19 @@ namespace Utils
          bool readLines();
 
          /** Print all the lines that have been read and unprocessed. */
-         void print() const;
+         void printfile() const;
 
          /** Print all of the individuals in order by their ID. */
          void printIndividualsInDescendingId() const;
 
          /** Print all of the families in order by their ID. */
          void printFamiliesInDescendingId() const;
+
+		 /** Print all of the individuals with upcoming birthdays. */
+		 void printIndividualsUpcomingBirthdays() const;
+
+		 /** Print all of the individuals with upcoming Annivarsaries. */
+		 void printIndividualsUpcomingAnnivarsaries() const;
 
          /** Close the file. */
          void close();
