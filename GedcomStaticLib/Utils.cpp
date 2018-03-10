@@ -117,43 +117,43 @@ int Utils::Gedcom::Utility::monthToInt(const std::string& month)
    }
    else if (month == "MAR")
    {
-      return 2;
+      return 3;
    }
    else if (month == "APR")
    {
-      return 2;
+      return 4;
    }
    else if (month == "MAY")
    {
-      return 2;
+      return 5;
    }
    else if (month == "JUN")
    {
-      return 2;
+      return 6;
    }
    else if (month == "JUL")
    {
-      return 2;
+      return 7;
    }
    else if (month == "AUG")
    {
-      return 2;
+      return 8;
    }
    else if (month == "SEP")
    {
-      return 2;
+      return 9;
    }
    else if (month == "OCT")
    {
-      return 2;
+      return 10;
    }
    else if (month == "NOV")
    {
-      return 2;
+      return 11;
    }
    else if (month == "DEC")
    {
-      return 2;
+      return 12;
    }
 
    return -1;

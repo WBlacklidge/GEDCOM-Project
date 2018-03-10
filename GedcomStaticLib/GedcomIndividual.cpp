@@ -1,6 +1,6 @@
 /*
 * @file
-* @author William Blacklidge
+* @author William Blacklidge 
 * @date 01/30/2018
 * @brief This class impelements a GEDCOM Individual.
 */

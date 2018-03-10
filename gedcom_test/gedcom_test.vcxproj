@@ -127,6 +127,8 @@
     <ClCompile Include="same_name_birth_test.cpp" />
     <ClCompile Include="test_main.cpp" />
     <ClCompile Include="unique_id_test.cpp" />
+    <ClCompile Include="UpcomingAnnivarsaries_test.cpp" />
+    <ClCompile Include="UpcomingBirtdays_test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
