@@ -51,13 +51,13 @@ namespace
          end_year, end_month, end_day));
 
       // Under 150
-      int start_year = 1985;
-      int start_month = 1;
-      int start_day = 30;
+      start_year = 1985;
+      start_month = 1;
+      start_day = 30;
 
-      int end_year = 2013;
-      int end_month = 1;
-      int end_day = 2;
+      end_year = 2013;
+      end_month = 1;
+      end_day = 2;
 
       EXPECT_FALSE(Gedcom::Utility::isOver150(start_year, start_month, start_day,
          end_year, end_month, end_day));
