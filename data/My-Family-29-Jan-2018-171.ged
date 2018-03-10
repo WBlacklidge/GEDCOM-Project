@@ -1,0 +1,165 @@
+0 NOTE https://github.com/tsreedhar7087/GEDCOM-Project
+0 HEAD
+1 SOUR Family Echo
+2 WWW http://www.familyecho.com/
+1 FILE My Family
+1 DATE 29 JAN 2018
+1 DEST ANSTFILE
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 SUBM @I1@
+2 NAME Sreedhar Thirumanadham
+1 SUBN
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Chiranjeevi /Konidela/
+2 GIVN Chiranjeevi
+2 SURN Konidela
+2 _MARNM Konidela
+1 SEX M
+1 BIRT
+2 DATE 22 AUG 1957
+1 FAMS @F1@
+1 FAMC @F2@
+0 @I2@ INDI
+1 NAME Venkata /Konidela/
+2 GIVN Venkata
+2 SURN Konidela
+2 _MARNM Konidela
+1 SEX M
+1 BIRT
+2 DATE 4 MAR 1937
+1 DEAT Y
+2 DATE 8 AUG 2007
+1 FAMS @F2@
+0 @I3@ INDI
+1 NAME Anjana /Marisetty/
+2 GIVN Anjana
+2 SURN Marisetty
+2 _MARNM Konidela
+1 SEX F
+1 BIRT
+2 DATE 4 JAN 1942
+1 FAMS @F2@
+0 @I4@ INDI
+1 NAME Nagababu /Konidela/
+2 GIVN Nagababu
+2 SURN Konidela
+2 _MARNM Konidela
+1 SEX M
+1 BIRT
+2 DATE 6 APR 1960
+1 FAMC @F2@
+0 @I5@ INDI
+1 NAME Pawan Kalyan /Konidela/
+2 GIVN Pawan Kalyan
+2 SURN Konidela
+2 _MARNM Konidela
+1 SEX M
+1 BIRT
+2 DATE 4 SEP 1974
+1 FAMS @F3@
+1 FAMS @F4@
+1 FAMC @F2@
+0 @I6@ INDI
+1 NAME Surekha /Allu/
+2 GIVN Surekha
+2 SURN Allu
+2 _MARNM Konidela
+1 SEX F
+1 BIRT
+2 DATE 8 MAY 1959
+1 FAMS @F1@
+1 FAMC @F5@
+0 @I7@ INDI
+1 NAME Renu /Desai/
+2 GIVN Renu
+2 SURN Desai
+2 _MARNM Desai
+1 SEX F
+1 BIRT
+2 DATE 14 SEP 1982
+1 FAMS @F4@
+0 @I8@ INDI
+1 NAME Anna /Konidela/
+2 GIVN Anna
+2 SURN Konidela
+2 _MARNM Konidela
+1 SEX F
+1 BIRT
+2 DATE 19 JUN 1982
+1 FAMS @F5@
+0 @I9@ INDI
+1 NAME Laxmi /Allu/
+2 GIVN Laxmi
+2 SURN Allu
+2 _MARNM Allu
+1 SEX F
+1 BIRT
+2 DATE 11 JUN 2008
+1 FAMC @F5@
+0 @I10@ INDI
+1 NAME Geeta /Allu/
+2 GIVN Geeta
+2 SURN Allu
+2 _MARNM Allu
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 2006
+1 FAMC @F5@
+0 @I11@ INDI
+1 NAME Venkteswara /Allu/
+2 GIVN Upsana
+2 SURN Allu
+2 _MARNM Allu
+1 SEX M
+1 BIRT
+2 DATE 7 FEB 2010
+1 FAMC @F3@
+0 @I12@ INDI
+1 NAME Seeja /Konidela/
+2 GIVN Seeja
+2 SURN Konidela
+2 _MARNM Konidela
+1 SEX M
+1 BIRT
+2 DATE 13 MAR 2003
+1 FAMC @F4@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 MARR
+2 DATE 19 JAN 2010
+1 _CURRENT Y
+0 @F2@ FAM
+1 HUSB @I3@
+1 WIFE @I4@
+1 CHIL @I1@
+1 CHIL @I5@
+1 MARR
+2 DATE 4 JUL 1979
+1 _CURRENT Y
+0 @F3@ FAM
+1 HUSB @I6@
+1 WIFE @I5@
+1 CHIL @I11@
+1 MARR
+2 DATE 12 JAN 2012
+1 _CURRENT Y
+0 @F4@ FAM
+1 HUSB @I7@
+1 WIFE @I5@
+1 CHIL @I12@
+1 MARR
+2 DATE 7 APR 2005
+1 EVEN
+2 TYPE Ending
+1 _CURRENT N
+0 @F5@ FAM
+1 HUSB @I6@
+1 WIFE @I8@
+1 CHIL @I9@
+1 CHIL @I10@
+1 _CURRENT N
+0 TRLR
