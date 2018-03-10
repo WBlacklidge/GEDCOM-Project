@@ -1,6 +1,6 @@
 /*
 * @file
-* @author William Blacklidge
+* @author William Blacklidge and Sreedhar Thirumanadham
 * @date 01/30/2018
 * @brief This is the main point of execution.
 */

@@ -1,6 +1,6 @@
 /*
 * @file
-* @author William Blacklidge
+* @author William Blacklidge and Sreedhar Thirumanadham
 * @date 01/30/2018
 * @brief This class is for reading data from a Gedcom file.
 *
@@ -524,6 +524,7 @@ void GedcomFile::printIndividualsUpcomingBirthdays() const
 	std::string birthday;
 	int birth_year, birth_month, birth_day;
 	int curr_year, curr_month, curr_day;
+	int flag = 0;
 	
 	
 	for (it = m_individuals.begin(); it != m_individuals.end(); ++it)
@@ -540,7 +541,14 @@ void GedcomFile::printIndividualsUpcomingBirthdays() const
 		{
 
 				std::cout << it->second;
+				flag = 1;
 		}
+
+	}
+
+	if (!flag)
+	{
+		std::cout << "*==========================================NO Upcoming Birthdays===================================================*" << std::endl;
 	}
 
 	std::cout << "*===============================================================================================================*" << std::endl;
@@ -561,6 +569,7 @@ void GedcomFile::printIndividualsUpcomingAnnivarsaries() const
 	std::string deathday;
 	int death_year, death_month, death_day;
 	int curr_year, curr_month, curr_day;
+	int flag = 0;
 
 
 	for (it = m_individuals.begin(); it != m_individuals.end(); ++it)
@@ -580,7 +589,14 @@ void GedcomFile::printIndividualsUpcomingAnnivarsaries() const
 			{
 
 				std::cout << it->second;
+				flag = 1;
 			}
+			
+		}
+
+		if (!flag)
+		{
+			std::cout << "*==========================================NO Upcoming Annivarsaries===================================================*" << std::endl;
 		}
 	}
 
