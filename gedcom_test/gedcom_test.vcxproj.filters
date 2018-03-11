@@ -33,5 +33,11 @@
     <ClCompile Include="same_name_birth_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UpcomingBirtdays_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UpcomingAnnivarsaries_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

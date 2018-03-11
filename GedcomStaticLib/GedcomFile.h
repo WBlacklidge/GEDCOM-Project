@@ -102,6 +102,9 @@ namespace Utils
 		 /** Print all of the individuals with upcoming Annivarsaries. */
 		 void printIndividualsUpcomingAnnivarsaries() const;
 
+		 /** Print all of the individuals Deceased. */
+		 void printIndividualsDeceased() const;
+
          /** Close the file. */
          void close();
 

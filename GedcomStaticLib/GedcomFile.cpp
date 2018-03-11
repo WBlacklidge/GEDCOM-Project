@@ -500,7 +500,7 @@ void GedcomFile::printFamiliesInDescendingId() const
 {
    std::cout << "*===============================================================================================================*" << std::endl;
    std::cout << "|ID:\t|Married:     |Div:  |Husband ID:\t|Husband Name:\t|Wife ID:\t|Wife Name:\t|Children:\t\t";
-   std::cout << "*===============================================================================================================*" << std::endl;
+   std::cout << "\n*===============================================================================================================*" << std::endl;
 
    std::map<std::string, GedcomFamily>::const_iterator it;
    for (it = m_families.begin(); it != m_families.end(); ++it)
@@ -544,14 +544,16 @@ void GedcomFile::printIndividualsUpcomingBirthdays() const
 				flag = 1;
 		}
 
+		if (!flag)
+		{
+			std::cout << "*==========================================NO Upcoming Birthdays===================================================*" << std::endl;
+		}
+
 	}
 
-	if (!flag)
-	{
-		std::cout << "*==========================================NO Upcoming Birthdays===================================================*" << std::endl;
-	}
+	
 
-	std::cout << "*===============================================================================================================*" << std::endl;
+	std::cout << "*=======================================================================================================================*" << std::endl;
 }
 
 
@@ -601,4 +603,40 @@ void GedcomFile::printIndividualsUpcomingAnnivarsaries() const
 	}
 
 	std::cout << "*===============================================================================================================*" << std::endl;
+}
+
+void GedcomFile::printIndividualsDeceased() const
+{
+
+	std::cout << "*==========================================List of Deceased===================================================*" << std::endl;
+
+	std::cout << "*===============================================================================================================*" << std::endl;
+	std::cout << "|ID:\t|Name:\t\t|Gender:|Birthday:\t\t|Age:\t|Alive:\t|Death:\t\t|Child:\t\t|Spouse:";
+	std::cout << "\n*===============================================================================================================*" << std::endl;
+
+	std::map<std::string, GedcomIndividual>::const_iterator it;
+
+	int flag = 0;
+
+
+	for (it = m_individuals.begin(); it != m_individuals.end(); ++it)
+	{
+
+
+
+		if (!it->second.m_isAlive)
+		{
+				std::cout << it->second;
+				flag = 1;
+		}
+
+		
+
+		if (!flag)
+		{
+			std::cout << "*==========================================All are Living Happyly===================================================*" << std::endl;
+		}
+	}
+
+	std::cout << "*=============================================================================================================================*" << std::endl;
 }

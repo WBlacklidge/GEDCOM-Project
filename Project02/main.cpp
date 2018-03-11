@@ -15,7 +15,7 @@
 int main(int argc, char* argv[])
 {
    // TODO: I haven't tested passing in a command line value, so the string is hardcoded.
-   std::string ged_file = "data\\My-Family-29-Jan-2018-171.ged";
+   std::string ged_file = "data\\NoUpcomingBirthdays.ged";
       
    //"\\data\\proj02test.ged"; 
    // "\\data\\unique_id_test.ged";
@@ -56,6 +56,12 @@ int main(int argc, char* argv[])
 
    // Will print all of the individuals in the GEDCOM file upcoming Annivarsaries.
    my_file.printIndividualsUpcomingAnnivarsaries();
+
+   // Put some space between the two prints, easier on the eyes.
+   std::cout << "\n\n\n";
+
+   // Will print all of the individuals in the GEDCOM file Deceased.
+   my_file.printIndividualsDeceased();
 
    // Done.
    my_file.close();

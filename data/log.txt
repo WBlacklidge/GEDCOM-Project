@@ -1,7 +1,7 @@
 
-ERROR: INDIVIDUAL: US42: 34: 
-File: c:\workspace\project\gedcom-project\gedcomstaticlib\errorreporting.h
+ERROR: FAMILY: US22: 143: 
+File: e:\stevensschool\gedcom-project.gitmaster\trunk\gedcomstaticlib\errorreporting.h
 Function: Utils::Gedcom::GedcomFile::readLines
 Code Line#:30
-What: Living INDV named Kathryn Johnson has an invalid birthday 29 FEB 1988
-When: Mar  5 2018 17:53:56
+What: Family with ID: F1 already exists.
+When: Mar 10 2018 16:38:46
