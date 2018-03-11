@@ -4,4 +4,4 @@ File: e:\stevensschool\gedcom-project.gitmaster\trunk\gedcomstaticlib\errorrepor
 Function: Utils::Gedcom::GedcomFile::readLines
 Code Line#:30
 What: Family with ID: F1 already exists.
-When: Mar 10 2018 16:38:46
+When: Mar 10 2018 18:27:06

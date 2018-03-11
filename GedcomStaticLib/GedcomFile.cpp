@@ -544,11 +544,12 @@ void GedcomFile::printIndividualsUpcomingBirthdays() const
 				flag = 1;
 		}
 
-		if (!flag)
-		{
-			std::cout << "*==========================================NO Upcoming Birthdays===================================================*" << std::endl;
-		}
+	}
 
+	
+	if (!flag)
+	{
+		std::cout << "*==========================================NO Upcoming Birthdays===================================================*" << std::endl;
 	}
 
 	
@@ -596,10 +597,11 @@ void GedcomFile::printIndividualsUpcomingAnnivarsaries() const
 			
 		}
 
-		if (!flag)
-		{
-			std::cout << "*==========================================NO Upcoming Annivarsaries===================================================*" << std::endl;
-		}
+	}
+
+	if (!flag)
+	{
+		std::cout << "*==========================================NO Upcoming Annivarsaries===================================================*" << std::endl;
 	}
 
 	std::cout << "*===============================================================================================================*" << std::endl;
@@ -622,20 +624,17 @@ void GedcomFile::printIndividualsDeceased() const
 	for (it = m_individuals.begin(); it != m_individuals.end(); ++it)
 	{
 
-
-
 		if (!it->second.m_isAlive)
 		{
 				std::cout << it->second;
 				flag = 1;
 		}
 
-		
+	}
 
-		if (!flag)
-		{
-			std::cout << "*==========================================All are Living Happyly===================================================*" << std::endl;
-		}
+	if (!flag)
+	{
+		std::cout << "*==========================================All are Living Happyly===================================================*" << std::endl;
 	}
 
 	std::cout << "*=============================================================================================================================*" << std::endl;
