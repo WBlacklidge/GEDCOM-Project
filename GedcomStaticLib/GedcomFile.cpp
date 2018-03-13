@@ -526,7 +526,8 @@ void GedcomFile::printIndividualsUpcomingBirthdays() const
 	int curr_year, curr_month, curr_day;
 	int flag = 0;
 	
-	
+	Gedcom::Utility::getCurrentYearMonthDay(curr_year, curr_month, curr_day);
+
 	for (it = m_individuals.begin(); it != m_individuals.end(); ++it)
 	{
 		
@@ -534,7 +535,7 @@ void GedcomFile::printIndividualsUpcomingBirthdays() const
 		
 		
 		Gedcom::Utility::getYearMonthDayFromDateString(birthday, birth_year, birth_month, birth_day);
-		Gedcom::Utility::getCurrentYearMonthDay(curr_year, curr_month, curr_day);
+
 		
 			
 		if ( (birth_day >= curr_day) && (birth_month >= curr_month) && (curr_year >= birth_year))
@@ -574,6 +575,7 @@ void GedcomFile::printIndividualsUpcomingAnnivarsaries() const
 	int curr_year, curr_month, curr_day;
 	int flag = 0;
 
+	Gedcom::Utility::getCurrentYearMonthDay(curr_year, curr_month, curr_day);
 
 	for (it = m_individuals.begin(); it != m_individuals.end(); ++it)
 	{
@@ -586,7 +588,7 @@ void GedcomFile::printIndividualsUpcomingAnnivarsaries() const
 			deathday = it->second.m_deathday;
 
 			Gedcom::Utility::getYearMonthDayFromDateString(deathday, death_year, death_month, death_day);
-			Gedcom::Utility::getCurrentYearMonthDay(curr_year, curr_month, curr_day);
+	
 
 			if ((death_day >= curr_day) && (death_month >= curr_month) && (curr_year >= death_year))
 			{
@@ -635,6 +637,50 @@ void GedcomFile::printIndividualsDeceased() const
 	if (!flag)
 	{
 		std::cout << "*==========================================All are Living Happyly===================================================*" << std::endl;
+	}
+
+	std::cout << "*=============================================================================================================================*" << std::endl;
+}
+
+void GedcomFile::printIndividualsBornRecently() const
+{
+
+	std::cout << "*==========================================Recent Births <=30 days===================================================*" << std::endl;
+
+	std::cout << "*===============================================================================================================*" << std::endl;
+	std::cout << "|ID:\t|Name:\t\t|Gender:|Birthday:\t\t|Age:\t|Alive:\t|Death:\t\t|Child:\t\t|Spouse:";
+	std::cout << "\n*===============================================================================================================*" << std::endl;
+
+	std::map<std::string, GedcomIndividual>::const_iterator it;
+
+	std::string birthday;
+	int birth_year, birth_month, birth_day;
+	int curr_year, curr_month, curr_day;
+	int flag = 0;
+
+	Gedcom::Utility::getCurrentYearMonthDay(curr_year, curr_month, curr_day);
+
+	for (it = m_individuals.begin(); it != m_individuals.end(); ++it)
+	{
+
+		birthday = it->second.m_birthday;
+
+
+		Gedcom::Utility::getYearMonthDayFromDateString(birthday, birth_year, birth_month, birth_day);
+
+
+		if (((curr_day - birth_day) <= 0) && ((curr_month-birth_month == 1) || (curr_month - birth_month == 0) || (birth_month - curr_month == 11)) && ((curr_year == birth_year) || (curr_year == birth_year + 1)))
+		{
+
+			std::cout << it->second;
+			flag = 1;
+		}
+
+	}
+	
+	if (!flag)
+	{
+		std::cout << "*==========================================No one Born Recently===================================================*" << std::endl;
 	}
 
 	std::cout << "*=============================================================================================================================*" << std::endl;

@@ -105,6 +105,9 @@ namespace Utils
 		 /** Print all of the individuals Deceased. */
 		 void printIndividualsDeceased() const;
 
+		 /** Print all of the Recent Births. */
+		 void printIndividualsBornRecently() const;
+
          /** Close the file. */
          void close();
 
