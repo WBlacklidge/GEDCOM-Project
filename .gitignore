@@ -7,3 +7,13 @@
 *.pdb
 *.db
 *.opendb
+*.txt
+*.lib
+*.user
+*.ilk
+.vs/Project02/v15/.suo
+*.ipch
+*.db-shm
+*.db-wal
+*.lib
+external/lib64/GedcomStaticLib.lib
