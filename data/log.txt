@@ -1,7 +1,7 @@
 
-ERROR: OTHER: NA: -1: 
+ERROR: FAMILY: US22: 143: 
 File: e:\stevensschool\gedcom-project.gitmaster\trunk\gedcomstaticlib\errorreporting.h
 Function: Utils::Gedcom::GedcomFile::readLines
 Code Line#:30
-What: File is not open, can't read lines.
-When: Mar 12 2018 16:43:40
+What: Family with ID: F1 already exists.
+When: Mar 13 2018 11:23:03
