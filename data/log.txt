@@ -1,7 +1,0 @@
-
-ERROR: FAMILY: US22: 143: 
-File: e:\stevensschool\gedcom-project.gitmaster\trunk\gedcomstaticlib\errorreporting.h
-Function: Utils::Gedcom::GedcomFile::readLines
-Code Line#:30
-What: Family with ID: F1 already exists.
-When: Mar 13 2018 11:23:03
