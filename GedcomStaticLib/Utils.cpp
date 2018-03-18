@@ -159,9 +159,15 @@ int Utils::Gedcom::Utility::monthToInt(const std::string& month)
    return -1;
 }
 
-void Utils::Gedcom::Utility::getYearMonthDayFromDateString(std::string& date,
+bool Utils::Gedcom::Utility::getYearMonthDayFromDateString(std::string& date,
    int& year, int& month, int& day)
 {
+   // If the string is empty something went wrong.  Return false.
+   if (0 == date.size())
+   {
+      return false;
+   }
+
    // parse out the birthday
    // String used to temporarily hold the parts of the birthday object.
    std::string temp_month, temp_day, temp_year;
@@ -206,6 +212,8 @@ void Utils::Gedcom::Utility::getYearMonthDayFromDateString(std::string& date,
    year = std::stoi(temp_year, &size);
    month = monthToInt(temp_month);
    day = std::stoi(temp_day, &size);
+
+   return true;
 }
 
 bool Utils::Gedcom::Utility::isOver150(const int startYear, const int startMonth, const int startDay,
@@ -217,4 +225,73 @@ bool Utils::Gedcom::Utility::isOver150(const int startYear, const int startMonth
    }
 
    return false;
+}
+
+bool Utils::Gedcom::Utility::isDateGreaterThan(std::string& date1, std::string& date2)
+{
+   int date1_year;
+   int date1_month;
+   int date1_day;
+   int date2_year;
+   int date2_month;
+   int date2_day;
+
+   // Parse the string and get the tear, month and day
+   const bool valid_date_1 = Utils::Gedcom::Utility::getYearMonthDayFromDateString(
+      date1,
+      date1_year,
+      date1_month,
+      date1_day);
+
+   // Parse the string and get the tear, month and day
+   const bool valid_date_2 = Utils::Gedcom::Utility::getYearMonthDayFromDateString(
+      date2,
+      date2_year,
+      date2_month,
+      date2_day);
+
+   bool not_in_order = false;
+
+   // If both dates were given we can error check.
+   if (valid_date_1 && valid_date_2)
+   {
+      // Easiest check is year.
+      if (date1_year > date2_year)
+      {
+         return false;
+      }
+      else if(date1_year < date2_year)
+      {
+         return true;
+      }
+      else
+      {
+         // They are equal.  Check month.
+         if (date1_month > date2_month)
+         {
+            return false;
+         }
+         else if (date1_month < date2_month)
+         {
+            return true;
+         }
+         else
+         {
+            // They are equal.  Check day.
+            if (date1_day > date2_day)
+            {
+               if (date1_day > date2_day)
+               {
+                  return false;
+               }
+               else
+               {
+                  // It is equal or less than.  We are set.
+                  return true;
+               }
+            }
+         }
+      }
+   }
+   return true;
 }

@@ -429,6 +429,74 @@ bool GedcomFile::readLines()
                marriage_date,
                divorce_date);
 
+            // Error check that marriage date is before divorce date.
+            const bool marriage_before_divorce = Utils::Gedcom::Utility::isDateGreaterThan(
+               marriage_date, 
+               divorce_date);
+
+            if (!marriage_before_divorce)
+            {
+               // ERROR occurred.  Report it.
+               reportError("US04", ObjectType::e_indv,
+                  "Indvidual with ID: " + id + " has a marriage date after the divorce date.",
+                  it->getLineNumber(), __FUNCTION__);
+            }
+
+            // Find the wife to check her deathday.
+            // Get the wife name from the individuals map.
+            std::string temp_find_wife(wife_id);
+            temp_find_wife.erase(std::remove(temp_find_wife.begin(), temp_find_wife.end(), '@'),
+               temp_find_wife.end());
+            std::map<std::string, GedcomIndividual>::iterator it_find_wife;
+            it_find_wife = m_individuals.find(temp_find_wife);
+
+            // Find the husb to check his deathday.
+            // Get the husband name from the individuals map.
+            std::string temp_find_husb(husband_id);
+            temp_find_husb.erase(std::remove(temp_find_husb.begin(), temp_find_husb.end(), '@'),
+               temp_find_husb.end());
+            std::map<std::string, GedcomIndividual>::iterator it_find_husb;
+            it_find_husb = m_individuals.find(temp_find_husb);
+
+            bool wife_found = false;
+            bool husb_found = false;
+            bool divorce_before_death_wife;
+            bool divorce_before_death_husb;
+
+            // If we found the wife...
+            if (it_find_wife != m_individuals.end())
+            {
+               wife_found = true;
+               // Check divorce before death.
+               divorce_before_death_wife = Utils::Gedcom::Utility::isDateGreaterThan(
+                  divorce_date, it_find_wife->second.m_deathday);
+            }
+
+            // If we found the husband...
+            if (it_find_husb != m_individuals.end())
+            {
+               husb_found = true;
+               // Check divorce before death.
+               divorce_before_death_husb = Utils::Gedcom::Utility::isDateGreaterThan(
+                  divorce_date, it_find_husb->second.m_deathday);
+            }
+
+            if (wife_found && !divorce_before_death_wife)
+            {
+               // ERROR occurred.  Report it.
+               reportError("US06", ObjectType::e_indv,
+                  "Wife with ID: " + it_find_wife->second.m_id + " has a divorce date after the death date.",
+                  it->getLineNumber(), __FUNCTION__);
+            }
+
+            if (husb_found && !divorce_before_death_husb)
+            {
+               // ERROR occurred.  Report it.
+               reportError("US06", ObjectType::e_indv,
+                  "Husband with ID: " + it_find_husb->second.m_id + " has a divorce date after the death date.",
+                  it->getLineNumber(), __FUNCTION__);
+            }
+
             // Check that the Family ID is not already in the map.
             std::map<std::string, GedcomFamily>::iterator it_find;
 

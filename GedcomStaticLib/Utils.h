@@ -14,11 +14,13 @@ namespace Utils
 
          static int monthToInt(const std::string& month);
 
-         static void getYearMonthDayFromDateString(std::string& date,
+         static bool getYearMonthDayFromDateString(std::string& date,
             int& year, int& month, int& day);
 
          static bool isOver150(const int startYear, const int startMonth, const int startDay,
             const int endYear, const int endMonth, const int endDay);
+
+         static bool isDateGreaterThan(std::string& date1, std::string& date2);
       };
    }
 }
