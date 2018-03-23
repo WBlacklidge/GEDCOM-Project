@@ -69,6 +69,13 @@ int main(int argc, char* argv[])
    // Will print all of the individuals recently born.
    my_file.printIndividualsBornRecently();
 
+   // Put some space between the two prints, easier on the eyes.
+   std::cout << "\n\n\n";
+
+   // Will print all of the individuals recently Died.
+   my_file.printIndividualsRecentDeaths();
+
+
    // Done.
    my_file.close();
 

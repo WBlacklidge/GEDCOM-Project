@@ -108,6 +108,9 @@ namespace Utils
 		 /** Print all of the Recent Births. */
 		 void printIndividualsBornRecently() const;
 
+		 /** Print all of the Recent Deaths. */
+		 void printIndividualsRecentDeaths() const;
+
          /** Close the file. */
          void close();
 

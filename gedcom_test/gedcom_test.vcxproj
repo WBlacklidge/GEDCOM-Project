@@ -125,6 +125,7 @@
     <ClCompile Include="invalid_dates_test.cpp" />
     <ClCompile Include="print_error_test.cpp" />
     <ClCompile Include="RecentBirths_Test.cpp" />
+    <ClCompile Include="RecentDeaths_Test.cpp" />
     <ClCompile Include="same_name_birth_test.cpp" />
     <ClCompile Include="ListofDeceased_Test.cpp" />
     <ClCompile Include="test_main.cpp" />

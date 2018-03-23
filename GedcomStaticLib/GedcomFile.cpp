@@ -737,7 +737,7 @@ void GedcomFile::printIndividualsBornRecently() const
 		Gedcom::Utility::getYearMonthDayFromDateString(birthday, birth_year, birth_month, birth_day);
 
 
-		if (((curr_day - birth_day) <= 0) && ((curr_month-birth_month == 1) || (curr_month - birth_month == 0) || (birth_month - curr_month == 11)) && ((curr_year == birth_year) || (curr_year == birth_year + 1)))
+		if ((((curr_day - birth_day) <= 0) || ((birth_day - curr_day) <= 0)) && ((curr_month-birth_month == 1) || (curr_month - birth_month == 0) || (birth_month - curr_month == 11)) && ((curr_year == birth_year) || (curr_year == birth_year + 1)))
 		{
 
 			std::cout << it->second;
@@ -749,6 +749,56 @@ void GedcomFile::printIndividualsBornRecently() const
 	if (!flag)
 	{
 		std::cout << "*==========================================No one Born Recently===================================================*" << std::endl;
+	}
+
+	std::cout << "*=============================================================================================================================*" << std::endl;
+}
+
+void GedcomFile::printIndividualsRecentDeaths() const
+{
+
+	std::cout << "*==========================================Recent Deaths <=30 days===================================================*" << std::endl;
+
+	std::cout << "*===============================================================================================================*" << std::endl;
+	std::cout << "|ID:\t|Name:\t\t|Gender:|Birthday:\t\t|Age:\t|Alive:\t|Death:\t\t|Child:\t\t|Spouse:";
+	std::cout << "\n*===============================================================================================================*" << std::endl;
+
+	std::map<std::string, GedcomIndividual>::const_iterator it;
+
+	std::string deathday;
+	int death_year, death_month, death_day;
+	int curr_year, curr_month, curr_day;
+	int flag = 0;
+
+	Gedcom::Utility::getCurrentYearMonthDay(curr_year, curr_month, curr_day);
+
+	for (it = m_individuals.begin(); it != m_individuals.end(); ++it)
+	{
+
+		if (!it->second.m_isAlive)
+		{
+
+			deathday = it->second.m_deathday;
+
+			Gedcom::Utility::getYearMonthDayFromDateString(deathday, death_year, death_month, death_day);
+
+
+			if ((((curr_day - death_day) <= 0) || ((death_day - curr_day) <= 0)) && ((curr_month - death_month == 1) || (curr_month - death_month == 0) || (death_month - curr_month == 11)) && ((curr_year == death_year) || (curr_year == death_year + 1)))
+			{
+
+				std::cout << it->second;
+				flag = 1;
+			}
+
+		}
+
+	}
+
+
+
+	if (!flag)
+	{
+		std::cout << "*==========================================No one Died Recently===================================================*" << std::endl;
 	}
 
 	std::cout << "*=============================================================================================================================*" << std::endl;
