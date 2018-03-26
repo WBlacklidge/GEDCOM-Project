@@ -48,5 +48,8 @@
     <ClCompile Include="RecentDeaths_Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LargeAgeDiff_Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

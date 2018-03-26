@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="birth_death_over_150_test.cpp" />
     <ClCompile Include="invalid_dates_test.cpp" />
+    <ClCompile Include="LargeAgeDiff_Test.cpp" />
     <ClCompile Include="print_error_test.cpp" />
     <ClCompile Include="RecentBirths_Test.cpp" />
     <ClCompile Include="RecentDeaths_Test.cpp" />

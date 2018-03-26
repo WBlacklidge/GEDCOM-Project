@@ -10,6 +10,7 @@
 #include <map>
 #include <cctype>
 
+
 #include "GedcomObject.h"
 #include "GedcomIndividual.h"
 #include "GedcomFamily.h"
@@ -110,6 +111,9 @@ namespace Utils
 
 		 /** Print all of the Recent Deaths. */
 		 void printIndividualsRecentDeaths() const;
+
+		 /** Print all of the Large Age Diff.. */
+		 void printFamiliesLargeAgeDiff() const;
 
          /** Close the file. */
          void close();

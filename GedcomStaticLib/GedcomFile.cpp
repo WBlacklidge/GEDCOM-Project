@@ -803,3 +803,45 @@ void GedcomFile::printIndividualsRecentDeaths() const
 
 	std::cout << "*=============================================================================================================================*" << std::endl;
 }
+
+void GedcomFile::printFamiliesLargeAgeDiff() const
+{
+	std::cout << "*===============================================================================================================*" << std::endl;
+	std::cout << "|ID:\t|Married:     |Div:  |Husband ID:\t|Husband Name:\t|Wife ID:\t|Wife Name:\t|Children:\t\t";
+	std::cout << "\n*===============================================================================================================*" << std::endl;
+
+	std::map<std::string, GedcomFamily>::const_iterator it;
+	std::map<std::string, GedcomIndividual>::const_iterator it_find_husband;
+	std::map<std::string, GedcomIndividual>::const_iterator it_find_wife;
+	
+	int flag = 0;
+	for (it = m_families.begin(); it != m_families.end(); ++it)
+	{
+		std::string temp_find_husband(it->second.m_husbandId);
+		std::string temp_find_wife(it->second.m_wifeId);
+		temp_find_husband.erase(std::remove(temp_find_husband.begin(), temp_find_husband.end(), '@'),
+			temp_find_husband.end());
+		temp_find_wife.erase(std::remove(temp_find_wife.begin(), temp_find_wife.end(), '@'),
+			temp_find_wife.end());
+		it_find_husband = m_individuals.find(temp_find_husband);
+		it_find_wife = m_individuals.find(temp_find_wife);
+
+		if (((it_find_husband->second.m_age) > (2 * (it_find_wife->second.m_age))) ||
+			((it_find_wife->second.m_age) > (2 * (it_find_husband->second.m_age))))
+		{
+			std::cout << it->second;
+			flag = 1;
+		}
+		++it_find_husband;
+		++it_find_wife;
+
+	}
+
+	if (!flag)
+	{
+		std::cout << "*==========================================No one with Large Age Diff===================================================*" << std::endl;
+	}
+
+	std::cout << "*===============================================================================================================*" << std::endl;
+
+}
