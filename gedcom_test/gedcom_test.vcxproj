@@ -122,7 +122,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="birth_death_over_150_test.cpp" />
+    <ClCompile Include="divorce_before_death_test.cpp" />
     <ClCompile Include="invalid_dates_test.cpp" />
+    <ClCompile Include="marriage_before_divorce_test.cpp" />
     <ClCompile Include="print_error_test.cpp" />
     <ClCompile Include="RecentBirths_Test.cpp" />
     <ClCompile Include="RecentDeaths_Test.cpp" />

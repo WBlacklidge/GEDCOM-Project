@@ -17,3 +17,4 @@
 *.db-wal
 *.lib
 external/lib64/GedcomStaticLib.lib
+*.lib
