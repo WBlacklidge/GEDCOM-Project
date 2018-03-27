@@ -4,7 +4,7 @@
     <LocalDebuggerWorkingDirectory>$(SolutionDir)</LocalDebuggerWorkingDirectory>
     <LocalDebuggerEnvironment>PATH=external\lib64;%PATH%</LocalDebuggerEnvironment>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>--gtest_filter=MarriageBeforeDivorceTest.*</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>--gtest_filter=DivorceBeforeDeathTest.*</LocalDebuggerCommandArguments>
   </PropertyGroup>
   <PropertyGroup>
     <ShowAllFiles>true</ShowAllFiles>
