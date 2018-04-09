@@ -470,6 +470,22 @@ bool GedcomFile::readLines()
                // Check divorce before death.
                divorce_before_death_wife = Utils::Gedcom::Utility::isDateGreaterThan(
                   divorce_date, it_find_wife->second.m_deathday);
+
+               int year_apart;
+               int month_apart;
+               int day_apart;
+
+               Utils::Gedcom::Utility::isDateApart(it_find_wife->second.m_birthday,
+                  marriage_date, year_apart, month_apart, day_apart);
+
+               // Check that the wife was at least 14 years older than marriage date.
+               if (year_apart < 14)
+               {
+                  // ERROR occurred.  Report it.
+                  reportError("US10", ObjectType::e_indv,
+                     "Indvidual with ID: " + it_find_wife->second.m_id + " has a marriage date that is not at least 14 years from birth.",
+                     it->getLineNumber(), __FUNCTION__);
+               }
             }
 
             // If we found the husband...
@@ -479,6 +495,22 @@ bool GedcomFile::readLines()
                // Check divorce before death.
                divorce_before_death_husb = Utils::Gedcom::Utility::isDateGreaterThan(
                   divorce_date, it_find_husb->second.m_deathday);
+
+               int year_apart;
+               int month_apart;
+               int day_apart;
+
+               Utils::Gedcom::Utility::isDateApart(it_find_husb->second.m_birthday,
+                  marriage_date, year_apart, month_apart, day_apart);
+
+               // Check that the husband was at least 14 years older than marriage date.
+               if (year_apart < 14)
+               {
+                  // ERROR occurred.  Report it.
+                  reportError("US10", ObjectType::e_indv,
+                     "Indvidual with ID: " + it_find_husb->second.m_id  + " has a marriage date that is not at least 14 years from birth.",
+                     it->getLineNumber(), __FUNCTION__);
+               }
             }
 
             if (wife_found && !divorce_before_death_wife)

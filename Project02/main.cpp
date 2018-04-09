@@ -31,9 +31,10 @@ int main(int argc, char* argv[])
       "data\\UpcomingBirthdays.ged",
       "data\\UpcomingBirthdaySameMonth.ged",
       "data\\UpcomingBirthdaySameYear.ged",
+      "data\\MarriageAgeOver14.ged"
    };
 
-   for (unsigned int i = 0; i < 15; ++i)
+   for (unsigned int i = 0; i < 16; ++i)
    {
       // TODO: I haven't tested passing in a command line value, so the string is hardcoded.
       std::string ged_file = test_file_names[i];
