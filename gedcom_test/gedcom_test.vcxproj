@@ -126,6 +126,7 @@
     <ClCompile Include="invalid_dates_test.cpp" />
     <ClCompile Include="marriage_age_over_14_test.cpp" />
     <ClCompile Include="marriage_before_divorce_test.cpp" />
+    <ClCompile Include="parents_not_too_old_test.cpp" />
     <ClCompile Include="print_error_test.cpp" />
     <ClCompile Include="RecentBirths_Test.cpp" />
     <ClCompile Include="RecentDeaths_Test.cpp" />
