@@ -17,3 +17,7 @@
 *.db-wal
 *.lib
 external/lib64/GedcomStaticLib.lib
+*.lib
+*.vcxproj
+external/lib64/GedcomStaticLib.lib
+gedcom_test/gedcom_test.vcxproj.filters

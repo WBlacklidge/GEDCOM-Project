@@ -295,3 +295,116 @@ bool Utils::Gedcom::Utility::isDateGreaterThan(std::string& date1, std::string& 
    }
    return true;
 }
+
+bool Utils::Gedcom::Utility::isDateApart(std::string& olderDate, std::string& recentDate,
+   int& year, int& month, int& day)
+{
+   int date_older_year;
+   int date_older_month;
+   int date_older_day;
+   int date_recent_year;
+   int date_recent_month;
+   int date_recent_day;
+
+   // Parse the string and get the tear, month and day
+   const bool valid_date_1 = Utils::Gedcom::Utility::getYearMonthDayFromDateString(
+      olderDate,
+      date_older_year,
+      date_older_month,
+      date_older_day);
+
+   // Parse the string and get the tear, month and day
+   const bool valid_date_2 = Utils::Gedcom::Utility::getYearMonthDayFromDateString(
+      recentDate,
+      date_recent_year,
+      date_recent_month,
+      date_recent_day);
+
+   // If both dates were given we can error check.
+   if (valid_date_1 && valid_date_2)
+   {
+
+      year = date_recent_year - date_older_year;
+
+      // If they didn't put the dates in order according to the 
+      // function signature let them know there was an error.
+      if (year < 0)
+      {
+         return false;
+      }
+
+      month = date_recent_month - date_older_month;
+
+      // month being negative here is completely valid.
+      if (month < 0)
+      {
+         // subtract 1 from the year
+         year -= 1;
+
+         // add that year's worth of months to the negative month.
+         month += 12;
+      }
+
+      day = date_recent_day - date_older_day;
+
+      // day being negative here is completely valid.
+      if (day < 0)
+      {
+         // subtract 1 from the year
+         month -= 1;
+
+         // add this months number of days.
+         day += daysInMonth(month);
+      }
+   }
+   else
+   {
+      return false;
+   }
+}
+
+int Utils::Gedcom::Utility::daysInMonth(const int month)
+{
+   switch (month)
+   {
+   case 1:
+      return 31;
+      break;
+   case 2:
+      return 28;
+      break;
+   case 3:
+      return 31;
+      break;
+   case 4:
+      return 30;
+      break;
+   case 5:
+      return 31;
+      break;
+   case 6:
+      return 30;
+      break;
+   case 7:
+      return 31;
+      break;
+   case 8:
+      return 31;
+      break;
+   case 9:
+      return 30;
+      break;
+   case 10:
+      return 31;
+      break;
+   case 11:
+      return 30;
+      break;
+   case 12:
+      return 31;
+      break;
+   default:
+      // bad
+      return -1;
+   }
+}
