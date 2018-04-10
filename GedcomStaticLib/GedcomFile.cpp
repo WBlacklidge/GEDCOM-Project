@@ -670,7 +670,7 @@ void GedcomFile::printFamiliesInDescendingId() const
 
 void GedcomFile::printIndividualsUpcomingBirthdays() const
 {
-	std::cout << "*==========================================Upcoming Birthdays===================================================*" << std::endl;
+	std::cout << "*==========================================US38-Upcoming Birthdays===================================================*" << std::endl;
 	std::cout << "*===============================================================================================================*" << std::endl;
 	std::cout << "|ID:\t|Name:\t\t|Gender:|Birthday:\t\t|Age:\t|Alive:\t|Death:\t\t|Child:\t\t|Spouse:";
 	std::cout << "\n*===============================================================================================================*" << std::endl;
@@ -703,7 +703,7 @@ void GedcomFile::printIndividualsUpcomingBirthdays() const
 	
 	if (!flag)
 	{
-		std::cout << "*==========================================NO Upcoming Birthdays===================================================*" << std::endl;
+		std::cout << "*==========================================US38 - NO Upcoming Birthdays===================================================*" << std::endl;
 	}
 
 	
@@ -715,7 +715,7 @@ void GedcomFile::printIndividualsUpcomingBirthdays() const
 void GedcomFile::printIndividualsUpcomingAnnivarsaries() const
 {
 
-	std::cout << "*==========================================Upcoming Annivarsaries===================================================*" << std::endl;
+	std::cout << "*==========================================US39-Upcoming Annivarsaries===================================================*" << std::endl;
 
 	std::cout << "*===============================================================================================================*" << std::endl;
 	std::cout << "|ID:\t|Name:\t\t|Gender:|Birthday:\t\t|Age:\t|Alive:\t|Death:\t\t|Child:\t\t|Spouse:";
@@ -753,7 +753,7 @@ void GedcomFile::printIndividualsUpcomingAnnivarsaries() const
 
 	if (!flag)
 	{
-		std::cout << "*==========================================NO Upcoming Annivarsaries===================================================*" << std::endl;
+		std::cout << "*==========================================US39-NO Upcoming Annivarsaries===================================================*" << std::endl;
 	}
 
 	std::cout << "*===============================================================================================================*" << std::endl;
@@ -762,7 +762,7 @@ void GedcomFile::printIndividualsUpcomingAnnivarsaries() const
 void GedcomFile::printIndividualsDeceased() const
 {
 
-	std::cout << "*==========================================List of Deceased===================================================*" << std::endl;
+	std::cout << "*==========================================US29-List of Deceased===================================================*" << std::endl;
 
 	std::cout << "*===============================================================================================================*" << std::endl;
 	std::cout << "|ID:\t|Name:\t\t|Gender:|Birthday:\t\t|Age:\t|Alive:\t|Death:\t\t|Child:\t\t|Spouse:";
@@ -786,7 +786,7 @@ void GedcomFile::printIndividualsDeceased() const
 
 	if (!flag)
 	{
-		std::cout << "*==========================================All are Living Happyly===================================================*" << std::endl;
+		std::cout << "*==========================================US29-All are Living Happyly===================================================*" << std::endl;
 	}
 
 	std::cout << "*=============================================================================================================================*" << std::endl;
@@ -795,7 +795,7 @@ void GedcomFile::printIndividualsDeceased() const
 void GedcomFile::printIndividualsBornRecently() const
 {
 
-	std::cout << "*==========================================Recent Births <=30 days===================================================*" << std::endl;
+	std::cout << "*==========================================US35-Recent Births <=30 days===================================================*" << std::endl;
 
 	std::cout << "*===============================================================================================================*" << std::endl;
 	std::cout << "|ID:\t|Name:\t\t|Gender:|Birthday:\t\t|Age:\t|Alive:\t|Death:\t\t|Child:\t\t|Spouse:";
@@ -830,7 +830,7 @@ void GedcomFile::printIndividualsBornRecently() const
 	
 	if (!flag)
 	{
-		std::cout << "*==========================================No one Born Recently===================================================*" << std::endl;
+		std::cout << "*==========================================US35-No one Born Recently===================================================*" << std::endl;
 	}
 
 	std::cout << "*=============================================================================================================================*" << std::endl;
@@ -839,7 +839,7 @@ void GedcomFile::printIndividualsBornRecently() const
 void GedcomFile::printIndividualsRecentDeaths() const
 {
 
-	std::cout << "*==========================================Recent Deaths <=30 days===================================================*" << std::endl;
+	std::cout << "*==========================================US36-Recent Deaths <=30 days===================================================*" << std::endl;
 
 	std::cout << "*===============================================================================================================*" << std::endl;
 	std::cout << "|ID:\t|Name:\t\t|Gender:|Birthday:\t\t|Age:\t|Alive:\t|Death:\t\t|Child:\t\t|Spouse:";
@@ -880,7 +880,7 @@ void GedcomFile::printIndividualsRecentDeaths() const
 
 	if (!flag)
 	{
-		std::cout << "*==========================================No one Died Recently===================================================*" << std::endl;
+		std::cout << "*==========================================US36-No one Died Recently===================================================*" << std::endl;
 	}
 
 	std::cout << "*=============================================================================================================================*" << std::endl;
@@ -889,7 +889,7 @@ void GedcomFile::printIndividualsRecentDeaths() const
 void GedcomFile::printFamiliesLargeAgeDiff() const
 {
 
-	std::cout << "*==========================================Large Age Differences===================================================*" << std::endl;
+	std::cout << "*==========================================US34-Large Age Differences===================================================*" << std::endl;
 	std::cout << "*===============================================================================================================*" << std::endl;
 	std::cout << "|ID:\t|Married:     |Div:  |Husband ID:\t|Husband Name:\t|Wife ID:\t|Wife Name:\t|Children:\t\t";
 	std::cout << "\n*===============================================================================================================*" << std::endl;
@@ -923,9 +923,60 @@ void GedcomFile::printFamiliesLargeAgeDiff() const
 
 	if (!flag)
 	{
-		std::cout << "*==========================================No one with Large Age Diff===================================================*" << std::endl;
+		std::cout << "*==========================================US34-No one with Large Age Diff===================================================*" << std::endl;
 	}
 
 	std::cout << "*===============================================================================================================*" << std::endl;
 
+}
+
+void GedcomFile::printMultipleBirths() const
+{
+		
+	std::map<std::string, GedcomFamily>::const_iterator it;
+	std::map<std::string, GedcomIndividual>::const_iterator it_find_child;
+	std::vector<std::string> child_ids;
+	std::vector<std::string> birthday;
+	
+	
+	for (it = m_families.begin(); it != m_families.end(); ++it)
+	{
+		for (int i = 0; i < child_ids.size(); i++)
+		{
+			child_ids[i].assign(it->second.m_childIds[i]);
+			child_ids[i].erase(std::remove(child_ids[i].begin(), child_ids[i].end(), '@'), child_ids[i].end());
+
+			
+			it_find_child = m_individuals.find(child_ids[i]);
+
+			if (it_find_child != m_individuals.end())
+			{
+				birthday[i] = it_find_child->second.m_birthday;
+			}
+
+			it_find_child++;
+
+		}
+	}
+
+	int count = 5;
+	for (int i = 0; i < birthday.size(); i++)
+	{
+		if (birthday[i].compare(birthday[i + 1]) == 0)
+		{
+			count--;
+			std::cout << count;
+		}
+
+	}
+	
+	if (count<=4)
+	{
+		std::cout << "*==========================================US14-Multiple Births <= 5 ===============================================*" << std::endl;
+	}
+	else
+	{
+		std::cout << "*==========================================US14-Multiple Births > 5 ===============================================*" << std::endl;
+	}
+	
 }

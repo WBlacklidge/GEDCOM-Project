@@ -356,6 +356,8 @@ bool Utils::Gedcom::Utility::isDateApart(std::string& olderDate, std::string& re
          // add this months number of days.
          day += daysInMonth(month);
       }
+
+	  return true;
    }
    else
    {

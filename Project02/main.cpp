@@ -14,7 +14,7 @@
 * @return This always returns 0. */
 int main(int argc, char* argv[])
 {
-   const std::string test_file_names[]
+  /* const std::string test_file_names[]
    {
       "data\\divorce_before_death_test.ged",
       "data\\invalid_dates_test.ged",
@@ -37,17 +37,31 @@ int main(int argc, char* argv[])
 
    for (unsigned int i = 0; i < 17; ++i)
    {
-      // TODO: I haven't tested passing in a command line value, so the string is hardcoded.
-      std::string ged_file = test_file_names[i];
+	   // TODO: I haven't tested passing in a command line value, so the string is hardcoded.
+	   std::string ged_file = test_file_names[i];
 
-      //"\\data\\proj02test.ged"; 
-      // "\\data\\unique_id_test.ged";
+	   //"\\data\\proj02test.ged"; 
+	   // "\\data\\unique_id_test.ged";
 
-      // Accepts an absolute path to a file...
-      if (1 < argc)
-      {
-         ged_file = argv[1];
-      }
+	   // Accepts an absolute path to a file...
+	   if (1 < argc)
+	   {
+		   ged_file = argv[1];
+	   }
+
+   }*/
+
+   // TODO: I haven't tested passing in a command line value, so the string is hardcoded.
+	std::string ged_file = "data\\LargeAgeDiff.ged";
+
+	//"\\data\\proj02test.ged"; 
+	// "\\data\\unique_id_test.ged";
+
+	// Accepts an absolute path to a file...
+	if (1 < argc)
+	{
+		ged_file = argv[1];
+	}
 
       // Using the file path, create a GedcomFile object.
       Utils::Gedcom::GedcomFile my_file(ged_file);
@@ -103,6 +117,12 @@ int main(int argc, char* argv[])
 
    // Will print all of the Large Age Diff.
    my_file.printFamiliesLargeAgeDiff();
+
+   // Put some space between the two prints, easier on the eyes.
+   std::cout << "\n\n\n";
+
+   // Will print all of the Multiple births.
+   my_file.printMultipleBirths();
 
 
    // Done.

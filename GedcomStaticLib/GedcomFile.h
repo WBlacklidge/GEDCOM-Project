@@ -114,6 +114,9 @@ namespace Utils
 		 /** Print all of the Large Age Diff.. */
 		 void printFamiliesLargeAgeDiff() const;
 
+		 /** Print all of the Multiple Births.. */
+		 void printMultipleBirths() const;
+
          /** Close the file. */
          void close();
 
