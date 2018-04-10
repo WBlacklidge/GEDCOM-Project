@@ -10,7 +10,6 @@
 #include <map>
 #include <cctype>
 
-
 #include "GedcomObject.h"
 #include "GedcomIndividual.h"
 #include "GedcomFamily.h"

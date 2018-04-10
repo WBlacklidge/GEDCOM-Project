@@ -470,6 +470,22 @@ bool GedcomFile::readLines()
                // Check divorce before death.
                divorce_before_death_wife = Utils::Gedcom::Utility::isDateGreaterThan(
                   divorce_date, it_find_wife->second.m_deathday);
+
+               int year_apart;
+               int month_apart;
+               int day_apart;
+
+               Utils::Gedcom::Utility::isDateApart(it_find_wife->second.m_birthday,
+                  marriage_date, year_apart, month_apart, day_apart);
+
+               // Check that the wife was at least 14 years older than marriage date.
+               if (year_apart < 14)
+               {
+                  // ERROR occurred.  Report it.
+                  reportError("US10", ObjectType::e_indv,
+                     "Indvidual with ID: " + it_find_wife->second.m_id + " has a marriage date that is not at least 14 years from birth.",
+                     it->getLineNumber(), __FUNCTION__);
+               }
             }
 
             // If we found the husband...
@@ -479,6 +495,22 @@ bool GedcomFile::readLines()
                // Check divorce before death.
                divorce_before_death_husb = Utils::Gedcom::Utility::isDateGreaterThan(
                   divorce_date, it_find_husb->second.m_deathday);
+
+               int year_apart;
+               int month_apart;
+               int day_apart;
+
+               Utils::Gedcom::Utility::isDateApart(it_find_husb->second.m_birthday,
+                  marriage_date, year_apart, month_apart, day_apart);
+
+               // Check that the husband was at least 14 years older than marriage date.
+               if (year_apart < 14)
+               {
+                  // ERROR occurred.  Report it.
+                  reportError("US10", ObjectType::e_indv,
+                     "Indvidual with ID: " + it_find_husb->second.m_id  + " has a marriage date that is not at least 14 years from birth.",
+                     it->getLineNumber(), __FUNCTION__);
+               }
             }
 
             if (wife_found && !divorce_before_death_wife)
@@ -495,6 +527,62 @@ bool GedcomFile::readLines()
                reportError("US06", ObjectType::e_indv,
                   "Husband with ID: " + it_find_husb->second.m_id + " has a divorce date after the death date.",
                   it->getLineNumber(), __FUNCTION__);
+            }
+            std::string temp_husb_bday;
+            std::string temp_wife_bday;
+
+            // Get the children's birthdates and make sure the mother isn't over 60
+            // and the father isn't over 80.
+            if (it_find_husb != m_individuals.end())
+            {
+               temp_husb_bday = it_find_husb->second.m_birthday;
+            }
+
+            if (it_find_wife != m_individuals.end())
+            {
+               std::string temp_wife_bday = it_find_wife->second.m_birthday;
+            }
+
+            int year, month, day;
+
+            // For each kid check that mom wasn't over 60 and dad wasn't over 80 when born.
+            for (int i = 0; i < child_ids.size(); i++)
+            {
+               child_ids[i].erase(std::remove(child_ids[i].begin(), child_ids[i].end(), '@'), child_ids[i].end());
+
+               std::map<std::string, GedcomIndividual>::iterator it_find_child;
+               it_find_child = m_individuals.find(child_ids[i]);
+
+               if (it_find_child != m_individuals.end())
+               {
+                  if (temp_husb_bday.length() > 0)
+                  {
+                     Utils::Gedcom::Utility::isDateApart(temp_husb_bday, it_find_child->second.m_birthday,
+                        year, month, day);
+
+                     if (year > 80)
+                     {
+                        // ERROR occurred.  Report it.
+                        reportError("US12", ObjectType::e_indv,
+                           "Husband with ID: " + it_find_husb->second.m_id + " was older than 80 when child was born.",
+                           it->getLineNumber(), __FUNCTION__);
+                     }
+                  }
+
+                  if (temp_wife_bday.length() > 0)
+                  {
+                     Utils::Gedcom::Utility::isDateApart(temp_wife_bday, it_find_child->second.m_birthday,
+                        year, month, day);
+
+                     if (year > 60)
+                     {
+                        // ERROR occurred.  Report it.
+                        reportError("US12", ObjectType::e_indv,
+                           "Wife with ID: " + it_find_wife->second.m_id + " was older than 60 when child was born.",
+                           it->getLineNumber(), __FUNCTION__);
+                     }
+                  }
+               }
             }
 
             // Check that the Family ID is not already in the map.
@@ -604,15 +692,12 @@ void GedcomFile::printIndividualsUpcomingBirthdays() const
 		
 		Gedcom::Utility::getYearMonthDayFromDateString(birthday, birth_year, birth_month, birth_day);
 
-		
-			
-		if ( (birth_day >= curr_day) && (birth_month >= curr_month) && (curr_year >= birth_year))
+		if ((((curr_day - birth_day) <= 0) && (birth_month - curr_month == 0)) || (((birth_day - curr_day) <= 0) && ((birth_month - curr_month == 1) || (curr_month - birth_month == 11))))
 		{
 
-				std::cout << it->second;
-				flag = 1;
+			std::cout << it->second;
+			flag = 1;
 		}
-
 	}
 
 	
@@ -648,8 +733,6 @@ void GedcomFile::printIndividualsUpcomingAnnivarsaries() const
 	for (it = m_individuals.begin(); it != m_individuals.end(); ++it)
 	{
 
-
-
 		if (!it->second.m_isAlive)
 		{
 
@@ -657,8 +740,7 @@ void GedcomFile::printIndividualsUpcomingAnnivarsaries() const
 
 			Gedcom::Utility::getYearMonthDayFromDateString(deathday, death_year, death_month, death_day);
 	
-
-			if ((death_day >= curr_day) && (death_month >= curr_month) && (curr_year >= death_year))
+			if ((((curr_day - death_day) <= 0) && (death_month - curr_month == 0)) || (((death_day - curr_day) <= 0) && ((death_month - curr_month == 1) || (curr_month - death_month == 11))))
 			{
 
 				std::cout << it->second;
@@ -806,6 +888,8 @@ void GedcomFile::printIndividualsRecentDeaths() const
 
 void GedcomFile::printFamiliesLargeAgeDiff() const
 {
+
+	std::cout << "*==========================================Large Age Differences===================================================*" << std::endl;
 	std::cout << "*===============================================================================================================*" << std::endl;
 	std::cout << "|ID:\t|Married:     |Div:  |Husband ID:\t|Husband Name:\t|Wife ID:\t|Wife Name:\t|Children:\t\t";
 	std::cout << "\n*===============================================================================================================*" << std::endl;
