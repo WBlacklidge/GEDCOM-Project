@@ -692,12 +692,15 @@ void GedcomFile::printIndividualsUpcomingBirthdays() const
 		
 		Gedcom::Utility::getYearMonthDayFromDateString(birthday, birth_year, birth_month, birth_day);
 
-		if ((((curr_day - birth_day) <= 0) && (birth_month - curr_month == 0)) || (((birth_day - curr_day) <= 0) && ((birth_month - curr_month == 1) || (curr_month - birth_month == 11))))
+		
+			
+		if ( (birth_day >= curr_day) && (birth_month >= curr_month) && (curr_year >= birth_year))
 		{
 
-			std::cout << it->second;
-			flag = 1;
+				std::cout << it->second;
+				flag = 1;
 		}
+
 	}
 
 	
@@ -733,6 +736,8 @@ void GedcomFile::printIndividualsUpcomingAnnivarsaries() const
 	for (it = m_individuals.begin(); it != m_individuals.end(); ++it)
 	{
 
+
+
 		if (!it->second.m_isAlive)
 		{
 
@@ -740,7 +745,8 @@ void GedcomFile::printIndividualsUpcomingAnnivarsaries() const
 
 			Gedcom::Utility::getYearMonthDayFromDateString(deathday, death_year, death_month, death_day);
 	
-			if ((((curr_day - death_day) <= 0) && (death_month - curr_month == 0)) || (((death_day - curr_day) <= 0) && ((death_month - curr_month == 1) || (curr_month - death_month == 11))))
+
+			if ((death_day >= curr_day) && (death_month >= curr_month) && (curr_year >= death_year))
 			{
 
 				std::cout << it->second;
@@ -888,8 +894,6 @@ void GedcomFile::printIndividualsRecentDeaths() const
 
 void GedcomFile::printFamiliesLargeAgeDiff() const
 {
-
-	std::cout << "*==========================================Large Age Differences===================================================*" << std::endl;
 	std::cout << "*===============================================================================================================*" << std::endl;
 	std::cout << "|ID:\t|Married:     |Div:  |Husband ID:\t|Husband Name:\t|Wife ID:\t|Wife Name:\t|Children:\t\t";
 	std::cout << "\n*===============================================================================================================*" << std::endl;
