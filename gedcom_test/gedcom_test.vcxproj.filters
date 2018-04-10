@@ -48,20 +48,7 @@
     <ClCompile Include="RecentDeaths_Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="LargeAgeDiff_Test.cpp">
-=======
-    <ClCompile Include="divorce_before_death_test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="marriage_before_divorce_test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="marriage_age_over_14_test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="parents_not_too_old_test.cpp">
->>>>>>> 7c366bc8986442a9a44b0d51c30d637466b71eab
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

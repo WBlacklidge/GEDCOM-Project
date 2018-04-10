@@ -12,12 +12,12 @@ using namespace Utils;
 
 namespace
 {
-   /** Test fixture for BirthDeathOver150Test. */
-   class BirthDeathOver150Test : public ::testing::Test
+   /** Test fixture for invalid dates tests. */
+   class InvalidDatesTest : public ::testing::Test
    {
    protected:
       /** Constructor. */
-      BirthDeathOver150Test()
+      InvalidDatesTest()
       {
       }
 
@@ -36,7 +36,7 @@ namespace
       }
    };
 
-   TEST_F(BirthDeathOver150Test, AllDates)
+   TEST_F(InvalidDatesTest, AllDates)
    {
       // Over 150
       int start_year = 1785;

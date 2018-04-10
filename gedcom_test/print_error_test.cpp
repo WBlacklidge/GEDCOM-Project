@@ -153,7 +153,7 @@ namespace
 
          const std::string temp(buffer);
 
-         EXPECT_TRUE(std::string::npos != temp.find("ERROR:", 0));
+         EXPECT_TRUE(std::string::npos != temp.find("Invalid Data Record Line# 22", 0));
 
          input_file.close();
 
