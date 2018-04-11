@@ -21,6 +21,7 @@ namespace Utils
             const int endYear, const int endMonth, const int endDay);
 
          static bool isDateGreaterThan(std::string& date1, std::string& date2);
+		 static bool isDateEqual(std::string& date1, std::string& date2);
 
          static bool isDateApart(std::string& olderDate, std::string& recentDate,
             int& year, int& month, int& day);

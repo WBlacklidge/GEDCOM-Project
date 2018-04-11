@@ -1,6 +1,7 @@
 #pragma once
 #include "Utils.h"
 #include <chrono>
+#include <iostream>
 
 void Utils::Gedcom::Utility::getCurrentYearMonthDay(int& year, int& month, int& day)
 {
@@ -294,6 +295,47 @@ bool Utils::Gedcom::Utility::isDateGreaterThan(std::string& date1, std::string& 
       }
    }
    return true;
+}
+
+bool Utils::Gedcom::Utility::isDateEqual(std::string& date1, std::string& date2)
+{
+	int date1_year;
+	int date1_month;
+	int date1_day;
+	int date2_year;
+	int date2_month;
+	int date2_day;
+
+	// Parse the string and get the tear, month and day
+	const bool valid_date_1 = Utils::Gedcom::Utility::getYearMonthDayFromDateString(
+		date1,
+		date1_year,
+		date1_month,
+		date1_day);
+
+	// Parse the string and get the tear, month and day
+	const bool valid_date_2 = Utils::Gedcom::Utility::getYearMonthDayFromDateString(
+		date2,
+		date2_year,
+		date2_month,
+		date2_day);
+
+	
+	// If both dates were given we can error check.
+	if (valid_date_1 && valid_date_2)
+	{
+		
+		if ((date1_year == date2_year) && (date1_month == date2_month) && (date1_day == date2_day))
+		{
+		   //std::cout << "*==========================================US14-VALID ===============================================*" << std::endl;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	return false;
 }
 
 bool Utils::Gedcom::Utility::isDateApart(std::string& olderDate, std::string& recentDate,

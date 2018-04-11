@@ -63,5 +63,11 @@
     <ClCompile Include="parents_not_too_old_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CorrectGender_Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Multiplebirths_Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
